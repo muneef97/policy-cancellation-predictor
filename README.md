@@ -1,4 +1,4 @@
-# Churn Busters — HBF Proactive Retention Challenge
+# Churn Busters - HBF Proactive Retention Challenge
 
 **WA Data Science Innovation Hub Health Hackathon 2026**
 Team: Muneef Muhammed, Sandra Elsa Dennies, Diya Susan Eapen
