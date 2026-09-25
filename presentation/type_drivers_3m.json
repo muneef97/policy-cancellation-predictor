@@ -1,0 +1,191 @@
+{
+  "window_months": 3,
+  "types": {
+    "Switcher": {
+      "top_features": [
+        {
+          "feature": "MARKETING_OPTIN",
+          "label": "Marketing sign-up status",
+          "mean_abs_contrib": 4.58149
+        },
+        {
+          "feature": "TENURE_BAND",
+          "label": "How long they've been a member",
+          "mean_abs_contrib": 0.18073
+        },
+        {
+          "feature": "STATE_CODE",
+          "label": "State",
+          "mean_abs_contrib": 0.16196
+        },
+        {
+          "feature": "MONTHLY_PREMIUM",
+          "label": "Monthly premium",
+          "mean_abs_contrib": 0.16052
+        },
+        {
+          "feature": "CHANNEL_ACQUISITION",
+          "label": "How they joined",
+          "mean_abs_contrib": 0.10648
+        }
+      ],
+      "sample_n": 4000,
+      "population_n": 8829
+    },
+    "System Lapsed": {
+      "top_features": [
+        {
+          "feature": "MARKETING_OPTIN",
+          "label": "Marketing sign-up status",
+          "mean_abs_contrib": 3.6531
+        },
+        {
+          "feature": "PAYMENT_METHOD_DESC",
+          "label": "How they pay",
+          "mean_abs_contrib": 0.29669
+        },
+        {
+          "feature": "MONTHLY_PREMIUM",
+          "label": "Monthly premium",
+          "mean_abs_contrib": 0.2489
+        },
+        {
+          "feature": "TENURE_BAND",
+          "label": "How long they've been a member",
+          "mean_abs_contrib": 0.24513
+        },
+        {
+          "feature": "CHANNEL_ACQUISITION",
+          "label": "How they joined",
+          "mean_abs_contrib": 0.13737
+        }
+      ],
+      "sample_n": 4000,
+      "population_n": 4061
+    },
+    "Leave PHI": {
+      "top_features": [
+        {
+          "feature": "MARKETING_OPTIN",
+          "label": "Marketing sign-up status",
+          "mean_abs_contrib": 4.40628
+        },
+        {
+          "feature": "TENURE_BAND",
+          "label": "How long they've been a member",
+          "mean_abs_contrib": 0.23562
+        },
+        {
+          "feature": "MONTHLY_PREMIUM",
+          "label": "Monthly premium",
+          "mean_abs_contrib": 0.23424
+        },
+        {
+          "feature": "INCOME_TIER",
+          "label": "Income tier",
+          "mean_abs_contrib": 0.14882
+        },
+        {
+          "feature": "STATE_CODE",
+          "label": "State",
+          "mean_abs_contrib": 0.12454
+        }
+      ],
+      "sample_n": 2310,
+      "population_n": 2310
+    },
+    "Non-Recoverable": {
+      "top_features": [
+        {
+          "feature": "MARKETING_OPTIN",
+          "label": "Marketing sign-up status",
+          "mean_abs_contrib": 4.51624
+        },
+        {
+          "feature": "INCOME_TIER",
+          "label": "Income tier",
+          "mean_abs_contrib": 0.37196
+        },
+        {
+          "feature": "MONTHLY_PREMIUM",
+          "label": "Monthly premium",
+          "mean_abs_contrib": 0.31722
+        },
+        {
+          "feature": "TENURE_BAND",
+          "label": "How long they've been a member",
+          "mean_abs_contrib": 0.2216
+        },
+        {
+          "feature": "HOSPITAL_TIER",
+          "label": "Hospital cover tier",
+          "mean_abs_contrib": 0.14524
+        }
+      ],
+      "sample_n": 3240,
+      "population_n": 3240
+    },
+    "(unclassified)": {
+      "top_features": [
+        {
+          "feature": "MARKETING_OPTIN",
+          "label": "Marketing sign-up status",
+          "mean_abs_contrib": 3.51532
+        },
+        {
+          "feature": "TENURE_BAND",
+          "label": "How long they've been a member",
+          "mean_abs_contrib": 0.23968
+        },
+        {
+          "feature": "MONTHLY_PREMIUM",
+          "label": "Monthly premium",
+          "mean_abs_contrib": 0.23817
+        },
+        {
+          "feature": "CHANNEL_ACQUISITION",
+          "label": "How they joined",
+          "mean_abs_contrib": 0.11446
+        },
+        {
+          "feature": "INCOME_TIER",
+          "label": "Income tier",
+          "mean_abs_contrib": 0.11138
+        }
+      ],
+      "sample_n": 1475,
+      "population_n": 1475
+    }
+  },
+  "overall": {
+    "top_features": [
+      {
+        "feature": "MARKETING_OPTIN",
+        "label": "Marketing sign-up status",
+        "mean_abs_contrib": 4.26574
+      },
+      {
+        "feature": "MONTHLY_PREMIUM",
+        "label": "Monthly premium",
+        "mean_abs_contrib": 0.22159
+      },
+      {
+        "feature": "TENURE_BAND",
+        "label": "How long they've been a member",
+        "mean_abs_contrib": 0.21337
+      },
+      {
+        "feature": "INCOME_TIER",
+        "label": "Income tier",
+        "mean_abs_contrib": 0.13556
+      },
+      {
+        "feature": "CHANNEL_ACQUISITION",
+        "label": "How they joined",
+        "mean_abs_contrib": 0.1178
+      }
+    ],
+    "sample_n": 4000,
+    "population_n": 19915
+  }
+}
