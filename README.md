@@ -18,6 +18,21 @@ Headline results, all on held-out validation data:
 - One signal - an unresolved marketing sign-up status - is **20 to 40 times** stronger than any other feature, across every cancellation type
 - WA-based policyholders churn at **1.51%** over 3 months versus **3.76%** everywhere else - a gap that survives controlling for acquisition channel, income tier, and tenure
 
+## The pitch deck, in screenshots
+
+<table>
+<tr>
+<td width="50%"><img src="presentation/screenshots/deck-title.png" alt="Title slide"></td>
+<td width="50%"><img src="presentation/screenshots/deck-drivers.png" alt="What predicts cancellation, by type"></td>
+</tr>
+<tr>
+<td width="50%"><img src="presentation/screenshots/deck-model-performance.png" alt="Model performance and per-policy recommendation"></td>
+<td width="50%"><img src="presentation/screenshots/deck-action-plan.png" alt="The contact plan behind the $14.66M/month figure"></td>
+</tr>
+</table>
+
+The full interactive version — with a live intervention-threshold slider and a searchable policy explorer — is `HBF_Retention_Pitch_Deck_Theme.html`; open it in any browser.
+
 ### Why a 3-month window, specifically
 
 We trained and validated the model on every window from 1 to 9 months before picking one, rather than assuming. Raw accuracy (PR-AUC) actually keeps climbing the further out you look - but that's mostly because the definition of "positive" gets broader (the base rate roughly triples from 3 to 9 months), not because the model gets fundamentally sharper. ROC-AUC, which isn't skewed by base rate, tells the fairer story: it climbs steeply to 3 months (96.1% → 97.6%) then plateaus (97.6–97.9% all the way to 9 months). 3 months is the point where accuracy has already leveled off while the flagged share of the book is still tight enough to act on - and short enough to front-run the book's biggest seasonal event, a March premium-reset spike in cancellations. 1 month, by contrast, is the one window where our model actually loses to a simple baseline, because it forces the model to pinpoint an exact triggering month rather than rank overall risk.
