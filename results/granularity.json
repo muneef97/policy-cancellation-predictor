@@ -1,0 +1,155 @@
+{
+  "types": {
+    "leavers": 18440,
+    "best_round": 114,
+    "accuracy": 0.6627440347071584,
+    "accuracy_guessing_most_common": 0.4787960954446855,
+    "classes": {
+      "Switcher": {
+        "share": 0.4787960954446855,
+        "ranking": 0.8565612567875521,
+        "named_correctly": 0.8781288934194132,
+        "most_often_mistaken_for": "System Lapsed",
+        "mistaken_share": 0.08472080643334466
+      },
+      "Leave PHI": {
+        "share": 0.12527114967462039,
+        "ranking": 0.7367249324347899,
+        "named_correctly": 0.09567099567099567,
+        "most_often_mistaken_for": "Switcher",
+        "mistaken_share": 0.5233766233766234
+      },
+      "System Lapsed": {
+        "share": 0.22022776572668112,
+        "ranking": 0.8254679117243249,
+        "named_correctly": 0.5717803496675695,
+        "most_often_mistaken_for": "Switcher",
+        "mistaken_share": 0.32528933760157597
+      },
+      "Non-Recoverable": {
+        "share": 0.175704989154013,
+        "ranking": 0.8678252923976609,
+        "named_correctly": 0.5941358024691358,
+        "most_often_mistaken_for": "Switcher",
+        "mistaken_share": 0.24845679012345678
+      }
+    }
+  },
+  "reasons": {
+    "Switcher": {
+      "leavers": 8829,
+      "best_round": 63,
+      "accuracy": 0.7901234567901234,
+      "accuracy_guessing_most_common": 0.7908030354513534,
+      "classes": {
+        "Request received from other fund": {
+          "share": 0.7908030354513534,
+          "ranking": 0.5600859011423449,
+          "named_correctly": 0.9991406473789745,
+          "most_often_mistaken_for": "Member was unable to be contacted",
+          "mistaken_share": 0.0005729017473503294
+        },
+        "Member was unable to be contacted": {
+          "share": 0.04779703250651263,
+          "ranking": 0.4727552981407392,
+          "named_correctly": 0.0,
+          "most_often_mistaken_for": "Request received from other fund",
+          "mistaken_share": 1.0
+        },
+        "Affordability": {
+          "share": 0.031713670857401746,
+          "ranking": 0.5430827331517472,
+          "named_correctly": 0.0,
+          "most_often_mistaken_for": "Request received from other fund",
+          "mistaken_share": 1.0
+        },
+        "Change in circumstance": {
+          "share": 0.037943141918677085,
+          "ranking": 0.5641005591304135,
+          "named_correctly": 0.0,
+          "most_often_mistaken_for": "Request received from other fund",
+          "mistaken_share": 1.0
+        },
+        "Corporate Deal": {
+          "share": 0.01381809944501076,
+          "ranking": 0.6622851031862437,
+          "named_correctly": 0.0,
+          "most_often_mistaken_for": "Request received from other fund",
+          "mistaken_share": 1.0
+        },
+        "Other": {
+          "share": 0.07792501982104429,
+          "ranking": 0.6061901714834187,
+          "named_correctly": 0.0,
+          "most_often_mistaken_for": "Request received from other fund",
+          "mistaken_share": 0.9941860465116279
+        }
+      }
+    },
+    "Leave PHI": {
+      "leavers": 2310,
+      "best_round": 28,
+      "accuracy": 0.41255411255411256,
+      "accuracy_guessing_most_common": 0.3246753246753247,
+      "classes": {
+        "Affordability": {
+          "share": 0.3246753246753247,
+          "ranking": 0.6634491452991453,
+          "named_correctly": 0.656,
+          "most_often_mistaken_for": "Change in circumstance",
+          "mistaken_share": 0.19733333333333333
+        },
+        "Change in circumstance": {
+          "share": 0.29783549783549784,
+          "ranking": 0.66078027772202,
+          "named_correctly": 0.47093023255813954,
+          "most_often_mistaken_for": "Affordability",
+          "mistaken_share": 0.39098837209302323
+        },
+        "No perceived value": {
+          "share": 0.23809523809523808,
+          "ranking": 0.6020242768595041,
+          "named_correctly": 0.2109090909090909,
+          "most_often_mistaken_for": "Affordability",
+          "mistaken_share": 0.4909090909090909
+        },
+        "Other": {
+          "share": 0.1393939393939394,
+          "ranking": 0.6110756151817739,
+          "named_correctly": 0.06521739130434782,
+          "most_often_mistaken_for": "Affordability",
+          "mistaken_share": 0.48757763975155277
+        }
+      }
+    },
+    "Non-Recoverable": {
+      "leavers": 3240,
+      "best_round": 72,
+      "accuracy": 0.766358024691358,
+      "accuracy_guessing_most_common": 0.42098765432098767,
+      "classes": {
+        "Deceased": {
+          "share": 0.42098765432098767,
+          "ranking": 0.948280369726566,
+          "named_correctly": 0.9413489736070382,
+          "most_often_mistaken_for": "Other",
+          "mistaken_share": 0.03592375366568915
+        },
+        "Moving overseas": {
+          "share": 0.29814814814814816,
+          "ranking": 0.9549138610742374,
+          "named_correctly": 0.8933747412008282,
+          "most_often_mistaken_for": "Other",
+          "mistaken_share": 0.053830227743271224
+        },
+        "Other": {
+          "share": 0.2808641975308642,
+          "ranking": 0.8511194170636229,
+          "named_correctly": 0.36923076923076925,
+          "most_often_mistaken_for": "Moving overseas",
+          "mistaken_share": 0.321978021978022
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,665 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Retention Hub</title>
+<style>
+:root{
+  --bg:#F3F6F8; --surface:#FFFFFF; --surface-2:#EDF1F4; --side:#0F2A33; --side-ink:#C9DCE1; --side-hi:#FFFFFF; --side-act:#1D4E5A;
+  --ink:#0F2130; --ink-2:#4E6375; --muted:#8495A3; --border:#DCE3E8;
+  --accent:#166E7D; --accent-strong:#0D4A54; --accent-soft:#E1F0F2; --sel:#E07A2F; --sel-soft:#FBE9DB;
+  --phone:#C05621; --phone-2:#8A3D16; --good:#1F7A4D; --good-soft:#E2F3EA; --bad:#B03A22; --bad-soft:#F8E4DF; --warning:#B7791F; --warn-soft:#FBF0DC;
+  --on-accent:#FFFFFF; --shadow:0 1px 2px rgba(15,33,48,.05), 0 6px 18px rgba(15,33,48,.05);
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0A131A; --surface:#111D26; --surface-2:#17252F; --side:#07161C; --side-ink:#8FA9B2; --side-hi:#EEF6F8; --side-act:#143844;
+  --ink:#EAF2F5; --ink-2:#A2B6C3; --muted:#6F8696; --border:#223240;
+  --accent:#4FBACC; --accent-strong:#8FE0EE; --accent-soft:#11303A; --sel:#F0985A; --sel-soft:#3A2617;
+  --phone:#E08A4C; --phone-2:#EBA873; --good:#57C98A; --good-soft:#123021; --bad:#E7765F; --bad-soft:#3A1D17; --warning:#E3B158; --warn-soft:#33270F;
+  --on-accent:#05222A; --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.3); } }
+:root[data-theme="dark"]{
+  --bg:#0A131A; --surface:#111D26; --surface-2:#17252F; --side:#07161C; --side-ink:#8FA9B2; --side-hi:#EEF6F8; --side-act:#143844;
+  --ink:#EAF2F5; --ink-2:#A2B6C3; --muted:#6F8696; --border:#223240;
+  --accent:#4FBACC; --accent-strong:#8FE0EE; --accent-soft:#11303A; --sel:#F0985A; --sel-soft:#3A2617;
+  --phone:#E08A4C; --phone-2:#EBA873; --good:#57C98A; --good-soft:#123021; --bad:#E7765F; --bad-soft:#3A1D17; --warning:#E3B158; --warn-soft:#33270F;
+  --on-accent:#05222A; --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.3); }
+*{box-sizing:border-box}
+html,body{margin:0; height:100%}
+body{background:var(--bg); color:var(--ink); font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; font-size:14.5px; line-height:1.45; font-variant-numeric:tabular-nums}
+h1,h2,h3{margin:0; font-weight:650; letter-spacing:-.01em}
+.mono{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace}
+.app{display:grid; grid-template-columns:236px minmax(0,1fr); min-height:100vh}
+aside{background:var(--side); color:var(--side-ink); position:sticky; top:0; height:100vh; display:flex; flex-direction:column; padding:18px 12px}
+.logo{display:flex; align-items:center; gap:10px; padding:4px 8px 18px; color:var(--side-hi)}
+.logo .mark{width:34px; height:34px; border-radius:9px; background:linear-gradient(135deg,#2BA3B5,#166E7D); display:grid; place-items:center; font-weight:800; color:#fff; font-size:15px}
+.logo b{display:block; font-size:16px} .logo small{font-size:11.5px; color:var(--side-ink)}
+.navsec{font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--side-ink); opacity:.7; padding:14px 10px 6px}
+.nav a{display:flex; align-items:center; gap:10px; padding:9px 10px; border-radius:9px; color:var(--side-ink); text-decoration:none; font-weight:550; cursor:pointer; font-size:14px}
+.nav a:hover{background:rgba(255,255,255,.06); color:var(--side-hi)}
+.nav a.on{background:var(--side-act); color:var(--side-hi)}
+.nav svg{width:18px; height:18px; flex:none}
+.side-foot{margin-top:auto; font-size:11.5px; padding:10px; border-top:1px solid rgba(255,255,255,.08); line-height:1.4}
+.main{min-width:0}
+.top{position:sticky; top:0; z-index:5; background:var(--bg); border-bottom:1px solid var(--border); padding:12px 24px; display:flex; align-items:center; gap:12px; flex-wrap:wrap}
+.top h1{font-size:19px; margin-right:auto}
+.pill{font-size:12.5px; color:var(--ink-2); background:var(--surface); border:1px solid var(--border); border-radius:999px; padding:5px 11px}
+.tbtn{font:inherit; font-size:13px; color:var(--ink-2); background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:6px 11px; cursor:pointer}
+.filterbar{padding:10px 24px; display:flex; gap:8px; flex-wrap:wrap; align-items:center; border-bottom:1px solid var(--border); background:var(--surface)}
+.filterbar select{font:inherit; font-size:13px; color:var(--ink); background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:5px 8px; max-width:170px}
+.filterbar select.active{border-color:var(--sel); background:var(--sel-soft)}
+.chk{display:flex; align-items:center; gap:6px; font-size:13px; color:var(--ink-2)}
+.content{padding:20px 24px 40px}
+.page{display:none} .page.on{display:block}
+.grid{display:grid; gap:14px}
+.k5{grid-template-columns:repeat(5,minmax(0,1fr))} .c2{grid-template-columns:repeat(2,minmax(0,1fr))} .c3{grid-template-columns:repeat(3,minmax(0,1fr))} .c21{grid-template-columns:minmax(0,2fr) minmax(0,1fr)}
+@media (max-width:1180px){ .k5{grid-template-columns:repeat(3,minmax(0,1fr))} }
+@media (max-width:900px){ .app{grid-template-columns:1fr} aside{position:static; height:auto} .c2,.c3,.c21,.k5{grid-template-columns:1fr} }
+.card{background:var(--surface); border:1px solid var(--border); border-radius:12px; box-shadow:var(--shadow); padding:16px 18px; min-width:0}
+.card h3{font-size:14.5px; display:flex; justify-content:space-between; gap:8px; align-items:baseline; margin-bottom:10px}
+.card h3 small{font-weight:400; color:var(--muted); font-size:12px}
+.kpi .v{font-family:ui-monospace,Menlo,monospace; font-size:26px; font-weight:700; color:var(--accent-strong); line-height:1.1}
+.kpi .l{font-size:12.5px; color:var(--ink-2); margin-top:4px}
+.kpi .d{font-size:11.5px; color:var(--muted); margin-top:3px}
+.note{font-size:12.5px; color:var(--muted)}
+.seg{display:inline-flex; background:var(--surface-2); border-radius:8px; padding:2px; gap:2px}
+.seg button{font:inherit; font-size:12px; font-weight:600; border:0; background:none; color:var(--ink-2); padding:4px 9px; border-radius:6px; cursor:pointer}
+.seg button.on{background:var(--surface); color:var(--ink); box-shadow:var(--shadow)}
+/* bar chart */
+.hb{display:flex; flex-direction:column; gap:4px}
+.hb .r{display:grid; grid-template-columns:110px minmax(0,1fr) 92px; gap:8px; align-items:center; font-size:13px; padding:2px 4px; border-radius:6px; cursor:pointer}
+.hb .r:hover{background:var(--surface-2)}
+.hb .r.sel{background:var(--sel-soft)}
+.hb .t{height:14px; background:var(--surface-2); border-radius:4px; overflow:hidden}
+.hb .f{height:100%; border-radius:4px; background:var(--accent); transition:width .25s ease}
+.hb .r.sel .f{background:var(--sel)}
+.hb .r.dim .f{opacity:.35}
+.hb .val{font-family:ui-monospace,Menlo,monospace; text-align:right; font-size:12.5px}
+.hb .lab{white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+/* table */
+table{border-collapse:collapse; width:100%; font-size:13px}
+th,td{padding:8px 9px; border-bottom:1px solid var(--border); text-align:left; white-space:nowrap}
+th{font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; font-weight:650; position:sticky; top:0; background:var(--surface); cursor:pointer; user-select:none}
+th.n,td.n{text-align:right; font-family:ui-monospace,Menlo,monospace}
+tbody tr{cursor:pointer} tbody tr:hover{background:var(--surface-2)}
+.tablewrap{overflow:auto; max-height:640px; border:1px solid var(--border); border-radius:10px}
+.badge{display:inline-block; font-size:11px; font-weight:700; padding:2px 8px; border-radius:999px; white-space:nowrap}
+.b0{background:var(--bad-soft); color:var(--bad)} .b1{background:var(--warn-soft); color:var(--warning)} .b2{background:var(--accent-soft); color:var(--accent-strong)} .b3{background:var(--surface-2); color:var(--ink-2)} .b4{background:var(--surface-2); color:var(--muted)}
+.bip{background:var(--surface-2); color:var(--muted); border:1px dashed var(--muted)}
+.riskbar{display:inline-block; width:60px; height:7px; background:var(--surface-2); border-radius:4px; vertical-align:middle; margin-right:6px; overflow:hidden}
+.riskbar i{display:block; height:100%; background:var(--bad)}
+.pager{display:flex; gap:8px; align-items:center; justify-content:flex-end; margin-top:10px; font-size:13px}
+.btn{font:inherit; font-weight:650; font-size:13.5px; color:var(--on-accent); background:var(--accent); border:0; border-radius:8px; padding:8px 14px; cursor:pointer}
+.btn.ghost{background:var(--surface); color:var(--ink); border:1px solid var(--border)}
+.btn:disabled{opacity:.45; cursor:default}
+input[type=search],input[type=number],select.f{font:inherit; font-size:13px; color:var(--ink); background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:6px 9px}
+/* profile */
+.prof-head{display:flex; gap:20px; align-items:center; flex-wrap:wrap}
+.gauge{width:150px; height:86px}
+.facts{display:flex; flex-wrap:wrap; gap:6px; margin-top:8px}
+.fact{font-size:12.5px; background:var(--surface-2); border:1px solid var(--border); border-radius:999px; padding:3px 10px}
+.why{display:grid; grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) 80px; gap:10px; align-items:center; font-size:13px; padding:3px 0}
+.wt{height:10px; background:var(--surface-2); border-radius:5px; position:relative}
+.wf{position:absolute; top:0; bottom:0; border-radius:5px}
+.wm{position:absolute; left:50%; top:-3px; bottom:-3px; width:1px; background:var(--muted)}
+.opt{display:grid; grid-template-columns:150px minmax(0,1fr) 80px; gap:10px; align-items:center; font-size:13px; padding:2px 0}
+.opt.best{font-weight:700}
+.ot{height:11px; background:var(--surface-2); border-radius:5px; overflow:hidden}
+.of{height:100%; border-radius:5px}
+.action{border:1.5px solid var(--accent); background:var(--accent-soft); border-radius:10px; padding:10px 14px; margin-top:10px}
+.action b{font-size:16px}
+.fields{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:10px 12px}
+.fld label{display:block; font-size:12px; color:var(--ink-2); margin-bottom:3px}
+.fld select,.fld input{width:100%}
+.fld.ch select,.fld.ch input{border-color:var(--sel); box-shadow:0 0 0 2px var(--sel-soft)}
+.delta.up{color:var(--bad)} .delta.down{color:var(--good)}
+.callout{border-left:4px solid var(--warning); background:var(--warn-soft); border-radius:8px; padding:10px 14px; font-size:13.5px}
+/* planner */
+.sl{margin-bottom:12px} .sl .h{display:flex; justify-content:space-between; font-size:13px; gap:8px} .sl .h b{font-family:ui-monospace,Menlo,monospace; white-space:nowrap}
+input[type=range]{width:100%; accent-color:var(--accent)}
+.planbar{display:flex; height:28px; border-radius:7px; overflow:hidden; border:1px solid var(--border); margin:8px 0}
+.legend{display:flex; flex-wrap:wrap; gap:4px 14px; font-size:12.5px; color:var(--ink-2)}
+.sw{display:inline-block; width:10px; height:10px; border-radius:3px; margin-right:5px; vertical-align:-1px; border:1px solid var(--border)}
+/* heatmap */
+.hm{display:grid; gap:2px; font-size:11.5px}
+.hm div{padding:6px 4px; text-align:center; border-radius:4px}
+.hm .hc{cursor:pointer; font-family:ui-monospace,Menlo,monospace}
+.hm .hc:hover{outline:2px solid var(--sel)}
+.hm .hh{color:var(--muted); font-weight:600}
+.tip{position:fixed; pointer-events:none; background:var(--ink); color:var(--bg); font-size:12px; padding:6px 9px; border-radius:6px; z-index:50; display:none; max-width:260px}
+.ccard{border:1px solid var(--border); border-top:4px solid var(--c); background:var(--surface); border-radius:10px; padding:10px 12px}
+.ccard .cs{font-family:ui-monospace,Menlo,monospace; font-size:22px; font-weight:700}
+ul{margin:6px 0; padding-left:18px} li{margin:3px 0}
+</style>
+</head>
+<body>
+<div class="app">
+<aside>
+  <div class="logo"><div class="mark">RH</div><div><b>Retention Hub</b><small>Churn Busters &middot; demo for HBF</small></div></div>
+  <div class="nav" id="nav"></div>
+  <div class="side-foot">Prototype built for the HBF Proactive Retention challenge. Not an HBF system. De-identified data; share only as HBF allows.</div>
+</aside>
+<div class="main">
+  <div class="top"><h1 id="title">Dashboard</h1><span class="pill" id="bookPill"></span><span class="pill">Model: LightGBM &middot; calibrated</span><button class="tbtn" id="themeBtn">Light / dark</button></div>
+  <div class="filterbar" id="filterbar"></div>
+  <div class="content">
+
+  <!-- DASHBOARD -->
+  <section class="page" id="pg-dashboard">
+    <div class="grid k5" id="kpis"></div>
+    <div class="grid c2" style="margin-top:14px">
+      <div class="card"><h3><span>By state</span><small>click a bar to filter</small></h3><div class="hb" id="ch-STATE_CODE"></div></div>
+      <div class="card"><h3><span>By age of policy owner</span><small>click a bar to filter</small></h3><div class="hb" id="ch-POLICY_OWNER_AGE_BAND"></div></div>
+      <div class="card"><h3><span>By how long they've been a member</span><small>click a bar to filter</small></h3><div class="hb" id="ch-TENURE_BAND"></div></div>
+      <div class="card"><h3><span>By how they joined</span><small>click a bar to filter</small></h3><div class="hb" id="ch-CHANNEL_ACQUISITION"></div></div>
+      <div class="card"><h3><span>By hospital cover</span><small>click a bar to filter</small></h3><div class="hb" id="ch-HOSPITAL_TIER"></div></div>
+      <div class="card"><h3><span>By risk band</span><small>click a bar to filter</small></h3><div class="hb" id="ch-band"></div></div>
+    </div>
+    <div class="grid c21" style="margin-top:14px">
+      <div class="card"><h3><span>Riskiest policies in this selection</span><small><a href="#" data-go="policies">see all &rarr;</a></small></h3><div class="tablewrap" style="max-height:none"><table id="top10"></table></div></div>
+      <div class="card"><h3><span>Recommended action mix</span><small>baseline assumptions</small></h3><div id="actMix"></div></div>
+    </div>
+  </section>
+
+  <!-- POLICIES -->
+  <section class="page" id="pg-policies">
+    <div class="card">
+      <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:12px">
+        <input type="search" id="pSearch" placeholder="Search policy ID" aria-label="Search policy ID" style="width:200px">
+        <select class="f" id="pAction" aria-label="Recommended action"><option value="">Any recommended action</option></select>
+        <span class="note" id="pCount" style="margin-left:auto"></span>
+      </div>
+      <div class="tablewrap"><table id="ptable"></table></div>
+      <div class="pager"><button class="btn ghost" id="prev">&lsaquo; Prev</button><span id="pageInfo"></span><button class="btn ghost" id="next">Next &rsaquo;</button></div>
+      <p class="note">This list holds the <span id="nTop"></span> riskiest policies in the book plus a random <span id="nRand"></span> others, so any kind of policy can be opened. Charts and totals on the dashboard always use all <span class="bookN"></span> policies.</p>
+    </div>
+  </section>
+
+  <!-- PROFILE -->
+  <section class="page" id="pg-profile"><div id="profile"></div></section>
+
+  <!-- SEGMENTS -->
+  <section class="page" id="pg-segments">
+    <div class="card">
+      <h3><span>Cancellation rate heatmap</span><small>click a cell to filter the whole hub</small></h3>
+      <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:12px; font-size:13px">
+        Rows <select class="f" id="hmRow"></select> Columns <select class="f" id="hmCol"></select>
+        Show <span class="seg" id="hmMetric"></span>
+      </div>
+      <div id="heatmap" style="overflow:auto"></div>
+      <p class="note" id="hmNote"></p>
+    </div>
+    <div class="grid c2" style="margin-top:14px">
+      <div class="card"><h3><span>Where the expected cancellations are</span><small id="segDimLab"></small></h3><div class="hb" id="segBars"></div></div>
+      <div class="card"><h3><span>WA versus every other state</span><small>3-month cancellation rate, live book</small></h3><div class="hb" id="waBars"></div><p class="note">From the model's calibrated probabilities across the live book; the raw history shows the same gap.</p></div>
+    </div>
+  </section>
+
+  <!-- PLANNER -->
+  <section class="page" id="pg-planner">
+    <div class="grid" style="grid-template-columns:320px minmax(0,1fr)">
+      <div class="card" id="sliders"></div>
+      <div style="display:flex; flex-direction:column; gap:14px; min-width:0">
+        <div class="grid c3" id="planKpis"></div>
+        <div class="card"><h3><span>Contact plan for the whole book</span><small id="planSub"></small></h3><div class="planbar" id="planBar"></div><div class="legend" id="planLegend"></div><table id="planTable" style="margin-top:10px"></table></div>
+        <div class="grid c2">
+          <div class="card"><h3><span>Value as the success rate changes</span></h3><div id="sweep"></div></div>
+          <div class="card"><h3><span>Break-even rules</span></h3><div id="rules"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PERFORMANCE -->
+  <section class="page" id="pg-performance">
+    <div class="card">
+      <h3><span>How many leavers would a contact list catch?</span><small id="perfSub"></small></h3>
+      <div class="sl" style="max-width:520px"><div class="h"><label for="kSlider">Contact the riskiest</label><b id="kVal"></b></div><input type="range" id="kSlider" min="0" max="59" step="1" value="9"></div>
+      <div class="grid k5" id="perfKpis" style="grid-template-columns:repeat(4,minmax(0,1fr))"></div>
+      <div id="capture" style="margin-top:12px"></div>
+    </div>
+    <div class="grid c3" style="margin-top:14px">
+      <div class="card"><h3><span>Caught, by cancellation type</span><small>at this list size</small></h3><div class="hb" id="perfType"></div></div>
+      <div class="card"><h3><span>Caught, by month they left</span><small>at this list size</small></h3><div class="hb" id="perfLead"></div></div>
+      <div class="card"><h3><span>Do the percentages hold up?</span><small>predicted vs actual, by risk decile</small></h3><div id="calib"></div></div>
+    </div>
+  </section>
+
+  <!-- INSIGHTS -->
+  <section class="page" id="pg-insights">
+    <div class="grid c2">
+      <div class="card"><h3><span>Fields left out on purpose</span></h3><div id="leak"></div></div>
+      <div class="card"><h3><span>How well it works</span><small>months the model never saw</small></h3><table id="leakTable"></table><p class="note">Tested on Dec 2025 &ndash; Jan 2026, after training on Sep 2024 &ndash; Oct 2025.</p></div>
+    </div>
+    <div class="card" style="margin-top:14px"><h3><span>Four kinds of leaver</span><small id="clSub"></small></h3><div id="clChart"></div><div class="grid" id="clCards" style="grid-template-columns:repeat(4,minmax(0,1fr)); margin-top:10px"></div></div>
+    <div class="grid c2" style="margin-top:14px">
+      <div class="card"><h3><span>What drives the score</span><small>share of the model's reasoning</small></h3><div class="hb" id="drivers"></div></div>
+      <div class="card"><h3><span>How it was built, and its limits</span></h3><ul id="method"></ul></div>
+    </div>
+  </section>
+  </div>
+</div>
+</div>
+<div class="tip" id="tip"></div>
+
+<script id="data" type="application/json">__DATA__</script>
+<script>
+__MODEL_JS__
+</script>
+<script>
+(function(){
+"use strict";
+var D = JSON.parse(document.getElementById("data").textContent);
+var F = D.features, T = D.trees, W = D.spw, DK = D.deck, L = D.live, PF = D.perf;
+var FI = {}; F.forEach(function(f, i){ FI[f.name] = i; });
+var DIMS = D.dims, BANDS = D.bands;
+function $(id){ return document.getElementById(id); }
+function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]; }); }
+function pct(x, d){ return (x * 100).toFixed(d === undefined ? 1 : d) + "%"; }
+function int(n){ return Math.round(n).toLocaleString("en-AU"); }
+// probabilities: extra decimals below 1% so small risks never round to 0.0%
+function pp(x){ return x < 0.0001 ? "<0.01%" : pct(x, x < 0.01 ? 2 : 1); }
+function money(v, d){ var a = Math.abs(v), dd = d === undefined ? 0 : d;
+  var s = a >= 1e6 ? "$" + (a / 1e6).toFixed(2) + "M" : a >= 1e4 && d === undefined ? "$" + (a / 1e3).toFixed(0) + "k" : "$" + a.toLocaleString("en-AU", {minimumFractionDigits: dd, maximumFractionDigits: dd});
+  return (v < 0 ? "-" : "") + s; }
+function mlabel(m){ var p = m.split("-"); return ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][+p[1] - 1] + " " + p[0]; }
+document.querySelectorAll(".bookN").forEach(function(e){ e.textContent = int(L.n); });
+$("bookPill").textContent = "Live book: " + mlabel(D.months.live) + " · " + int(L.n) + " policies";
+
+// tooltip
+var tip = $("tip");
+document.addEventListener("mousemove", function(e){ var t = e.target.closest("[data-tip]"); if (!t || !t.getAttribute("data-tip")){ tip.style.display = "none"; return; }
+  tip.innerHTML = t.getAttribute("data-tip"); tip.style.display = "block"; tip.style.left = Math.min(e.clientX + 14, innerWidth - 270) + "px"; tip.style.top = (e.clientY + 14) + "px"; });
+
+// theme
+$("themeBtn").addEventListener("click", function(){ var r = document.documentElement, c = r.getAttribute("data-theme");
+  var dark = c ? c === "dark" : matchMedia("(prefers-color-scheme: dark)").matches; r.setAttribute("data-theme", dark ? "light" : "dark"); });
+
+// ---------- labels & order ----------
+var DIM_LABEL = {STATE_CODE:"State", POLICY_OWNER_AGE_BAND:"Age", TENURE_BAND:"Member for", CHANNEL_ACQUISITION:"Joined via", HOSPITAL_TIER:"Hospital cover", band:"Risk band"};
+var TENURE_ORDER = ["0-3m","3-6m","6-12m","1-2y","2-3y","3-5y","5-10y","10-15y","15-20y","20+y"];
+function cats(dim){ return dim === "band" ? BANDS : F[FI[dim]].cats; }
+function catLabel(dim, code){ if (code < 0) return "Unknown"; var c = cats(dim)[code]; return c === "MISSING" ? "Not recorded" : c; }
+function orderedCodes(dim){
+  var cs = cats(dim).map(function(_, i){ return i; });
+  if (dim === "TENURE_BAND") cs.sort(function(a, b){ return TENURE_ORDER.indexOf(cats(dim)[a]) - TENURE_ORDER.indexOf(cats(dim)[b]); });
+  return cs;
+}
+var ACTS = ["Digital nudge", "Digital + discount", "Phone call", "Phone + discount", "No action"];
+var ACT_COL = ["var(--accent)", "var(--accent-strong)", "var(--phone)", "var(--phone-2)", "var(--surface-2)"];
+
+// ---------- global filters ----------
+// cube row: [d0..d4, band, ip, n, ep, prem, rp, fl, a0..a4]
+var C = D.cube, NDIM = DIMS.length, IB = NDIM, IIP = NDIM + 1, IN = NDIM + 2;
+var FILT = {}; DIMS.concat(["band"]).forEach(function(d){ FILT[d] = null; });
+var HIDE_IP = true;
+function colOf(dim){ return dim === "band" ? IB : DIMS.indexOf(dim); }
+function rowPass(r, except){
+  if (HIDE_IP && r[IIP] === 1) return false;
+  for (var d in FILT){ if (d === except || FILT[d] === null) continue; if (r[colOf(d)] !== FILT[d]) return false; }
+  return true;
+}
+function agg(except, groupDim){
+  var out = {}, gi = groupDim ? colOf(groupDim) : -1;
+  for (var i = 0; i < C.length; i++){ var r = C[i]; if (!rowPass(r, except)) continue;
+    var k = gi < 0 ? "all" : r[gi]; var o = out[k] || (out[k] = {n:0, ep:0, prem:0, rp:0, fl:0, a:[0,0,0,0,0]});
+    o.n += r[IN]; o.ep += r[IN + 1]; o.prem += r[IN + 2]; o.rp += r[IN + 3]; o.fl += r[IN + 4];
+    for (var a = 0; a < 5; a++) o.a[a] += r[IN + 5 + a]; }
+  return out;
+}
+function buildFilterBar(){
+  var h = DIMS.concat(["band"]).map(function(d){
+    return '<select data-dim="' + d + '" aria-label="' + DIM_LABEL[d] + '"><option value="">' + DIM_LABEL[d] + ': all</option>' +
+      orderedCodes(d).map(function(c){ return '<option value="' + c + '">' + esc(catLabel(d, c)) + '</option>'; }).join("") + '</select>'; }).join("");
+  h += '<label class="chk"><input type="checkbox" id="hideIp" checked> Hide ' + int(L.in_progress) + ' policies already being cancelled</label>';
+  h += '<button class="tbtn" id="clearF">Clear filters</button>';
+  $("filterbar").innerHTML = h;
+  $("filterbar").querySelectorAll("select").forEach(function(s){ s.addEventListener("change", function(){ FILT[s.dataset.dim] = s.value === "" ? null : +s.value; refresh(); }); });
+  $("hideIp").addEventListener("change", function(){ HIDE_IP = this.checked; refresh(); });
+  $("clearF").addEventListener("click", function(){ for (var d in FILT) FILT[d] = null; refresh(); });
+}
+function syncFilterBar(){ $("filterbar").querySelectorAll("select").forEach(function(s){ var v = FILT[s.dataset.dim]; s.value = v === null ? "" : v; s.classList.toggle("active", v !== null); }); }
+function toggleFilter(dim, code){ FILT[dim] = FILT[dim] === code ? null : code; refresh(); }
+
+// ---------- generic horizontal bars ----------
+function hbars(el, rows, opts){
+  var mx = Math.max.apply(null, rows.map(function(r){ return r.v; })) || 1;
+  el.innerHTML = rows.map(function(r){
+    var cls = "r" + (r.sel ? " sel" : "") + (r.dim ? " dim" : "");
+    return '<div class="' + cls + '" data-k="' + r.k + '"' + (r.tip ? ' data-tip="' + esc(r.tip) + '"' : '') + '><div class="lab">' + esc(r.label) + '</div><div class="t"><div class="f" style="width:' + (r.v / mx * 100) + '%;' + (r.color ? 'background:' + r.color : '') + '"></div></div><div class="val">' + r.txt + '</div></div>'; }).join("");
+  if (opts && opts.onClick) el.querySelectorAll(".r").forEach(function(x){ x.addEventListener("click", function(){ opts.onClick(+x.dataset.k); }); });
+}
+
+// ---------- probability / actions ----------
+var A = {digital:0.20, phoneMult:1.5, discMult:1.3, phoneCost:20, digitalCost:0.10, value:1000, maxDisc:0.12, phoneCap:20000};
+var DEF = JSON.parse(JSON.stringify(A));
+function rates(){ var dr = A.digital, pr = Math.min(1, A.digital * A.phoneMult); return [dr, Math.min(1, dr * A.discMult), pr, Math.min(1, pr * A.discMult)]; }
+function optVals(p, annual){ var r = rates(), Dd = annual * A.maxDisc;
+  return [p * r[0] * A.value - A.digitalCost, p * r[1] * (A.value - Dd) - A.digitalCost, p * r[2] * A.value - A.phoneCost, p * r[3] * (A.value - Dd) - A.phoneCost]; }
+function best(v){ var b = 0; for (var i = 1; i < 4; i++) if (v[i] > v[b]) b = i; return v[b] > 0 ? b : 4; }
+function premAnnual(x){ var v = x[FI.MONTHLY_PREMIUM]; return (v === null ? DK.cost_benefit.train_median_premium : v) * 12; }
+function scoreX(x){ return calibrate(predictProb(T, x), W); }
+var sortedCells = D.book_cells.map(function(c){ return [c[1], c[0]]; }).sort(function(a, b){ return b[0] - a[0]; });
+function riskierThan(p){ var above = 0; for (var i = 0; i < sortedCells.length && sortedCells[i][0] > p; i++) above += sortedCells[i][1]; return 1 - above / L.n; }
+function bandOf(rank){ return rank <= .01 ? 0 : rank <= .05 ? 1 : rank <= .10 ? 2 : rank <= .25 ? 3 : 4; }
+function fval(fi, v){ var f = F[fi]; if (v === null || v === undefined) return "unknown";
+  if (f.kind === "cat"){ var c = f.cats[v]; return c === undefined ? "unknown" : c === "MISSING" ? "not recorded" : c; }
+  if (/PREMIUM|BENEFIT|OUT_OF_POCKET/.test(f.name)) return (v < 0 ? "-$" : "$") + Math.abs(v).toLocaleString("en-AU", {maximumFractionDigits: 0});
+  if (/^MONTHS_SINCE/.test(f.name) && v < 0) return "never";
+  return f.int ? String(Math.round(v)) : String(+(+v).toFixed(2)); }
+
+// ---------- policies ----------
+var P = D.policies; P.forEach(function(r, i){ r.i = i; r.band = bandOf(r.rank); r.dims = DIMS.map(function(d){ var v = r.x[FI[d]]; return v === null ? -1 : v; }); });
+var NTOP = 2500;
+function polPass(r){ if (HIDE_IP && r.ip) return false;
+  for (var d in FILT){ if (FILT[d] === null) continue; var v = d === "band" ? r.band : r.dims[DIMS.indexOf(d)]; if (v !== FILT[d]) return false; } return true; }
+
+// ---------- dashboard ----------
+var METRIC = "ep";
+function renderDashboard(){
+  var all = agg(null).all || {n:0, ep:0, prem:0, rp:0, fl:0, a:[0,0,0,0,0]};
+  var full = L.n - (HIDE_IP ? L.in_progress : 0);
+  $("kpis").innerHTML = [
+    [int(all.n), "Active policies in selection", all.n === full ? "whole book" : pct(all.n / full) + " of the book"],
+    [int(all.ep), "Expected cancellations, next 3 months", "sum of calibrated probabilities"],
+    [pct(all.n ? all.ep / all.n : 0, 2), "Average 3-month cancellation risk", "book average " + pct(L.expected_cancellations / L.n, 2)],
+    [money(all.rp), "Annual premium at risk", "premium &times; chance of leaving"],
+    [int(all.fl), "Flagged for outreach", "in the riskiest 5% of the book"]
+  ].map(function(k){ return '<div class="card kpi"><div class="v">' + k[0] + '</div><div class="l">' + k[1] + '</div><div class="d">' + k[2] + '</div></div>'; }).join("");
+  DIMS.concat(["band"]).forEach(function(dim){
+    var g = agg(dim, dim), rows = orderedCodes(dim).concat(g[-1] ? [-1] : []).filter(function(c){ return g[c] && g[c].n; }).map(function(c){
+      var o = g[c], rate = o.ep / o.n;
+      return {k:c, label:catLabel(dim, c), v:o.ep, txt:int(o.ep), sel:FILT[dim] === c, dim:FILT[dim] !== null && FILT[dim] !== c,
+              tip:"<b>" + esc(catLabel(dim, c)) + "</b><br>" + int(o.n) + " policies<br>" + int(o.ep) + " expected cancellations (" + pct(rate, 2) + ")<br>" + int(o.fl) + " flagged &middot; " + money(o.rp) + " premium at risk"}; });
+    if (dim !== "band") rows.forEach(function(r){ var o = g[r.k]; r.txt = int(o.ep) + ' <span class="note">' + pct(o.ep / o.n, 1) + '</span>'; });
+    hbars($("ch-" + dim), rows, {onClick:function(c){ toggleFilter(dim, c); }});
+  });
+  var top = P.filter(polPass).sort(function(a, b){ return b.p - a.p; }).slice(0, 10);
+  $("top10").innerHTML = '<thead><tr><th>Policy</th><th class="n">Risk</th><th>State</th><th>Age</th><th>Member for</th><th class="n">Premium</th><th>Action</th></tr></thead><tbody>' +
+    (top.map(function(r){ return '<tr data-i="' + r.i + '"><td class="mono">' + r.id + '</td><td class="n">' + pp(r.p) + '</td><td>' + catLabel("STATE_CODE", r.dims[0]) + '</td><td>' + catLabel("POLICY_OWNER_AGE_BAND", r.dims[1]) + '</td><td>' + catLabel("TENURE_BAND", r.dims[2]) + '</td><td class="n">' + fval(FI.MONTHLY_PREMIUM, r.x[FI.MONTHLY_PREMIUM]) + '</td><td>' + actBadge(r) + '</td></tr>'; }).join("") || '<tr><td colspan="7" class="note">No listed policies match.</td></tr>') + '</tbody>';
+  $("top10").querySelectorAll("tbody tr[data-i]").forEach(function(tr){ tr.addEventListener("click", function(){ openProfile(+tr.dataset.i); }); });
+  var tot = all.a.reduce(function(s, v){ return s + v; }, 0) || 1;
+  $("actMix").innerHTML = '<div class="planbar">' + all.a.map(function(v, i){ return '<div style="width:' + (v / tot * 100) + '%;background:' + ACT_COL[i] + '" data-tip="' + ACTS[i] + ': ' + int(v) + '"></div>'; }).join("") + '</div>' +
+    all.a.map(function(v, i){ return '<div class="opt"><div><i class="sw" style="background:' + ACT_COL[i] + '"></i>' + ACTS[i] + '</div><div class="ot"><div class="of" style="width:' + (v / tot * 100) + '%;background:' + ACT_COL[i] + '"></div></div><div class="mono" style="text-align:right">' + int(v) + '</div></div>'; }).join("") +
+    '<p class="note">Best action per policy at HBF\'s costs and our baseline assumptions. Change them in the Retention planner.</p>';
+}
+function actBadge(r){
+  var b = r.ip ? '<span class="badge bip" data-tip="Premium is $0 or blank this month: the cancellation is most likely already being processed.">in progress</span>' : "";
+  return '<span class="badge b' + r.act + '">' + ACTS[r.act] + '</span> ' + b;
+}
+
+// ---------- policies page ----------
+var PSORT = {k:"p", dir:-1}, PPAGE = 0, PSIZE = 40;
+var PCOLS = [["id","Policy",0],["p","Risk (3 months)",1],["rank","Book rank",1],["s0","State",0],["s1","Age",0],["s2","Member for",0],["s3","Joined via",0],["s4","Hospital",0],["prem","Premium /mo",1],["act","Recommended action",0],["ev","Expected value",1]];
+function pval(r, k){ if (k === "prem"){ var v = r.x[FI.MONTHLY_PREMIUM]; return v === null ? -1 : v; } if (k[0] === "s" && k.length === 2) return catLabel(DIMS[+k[1]], r.dims[+k[1]]); return r[k]; }
+function renderPolicies(){
+  var q = $("pSearch").value.trim().toLowerCase(), act = $("pAction").value;
+  var rows = P.filter(function(r){ return polPass(r) && (!q || r.id.indexOf(q) !== -1) && (act === "" || r.act === +act); });
+  rows.sort(function(a, b){ var x = pval(a, PSORT.k), y = pval(b, PSORT.k); return (x < y ? -1 : x > y ? 1 : 0) * PSORT.dir; });
+  var pages = Math.max(1, Math.ceil(rows.length / PSIZE)); PPAGE = Math.min(PPAGE, pages - 1);
+  var view = rows.slice(PPAGE * PSIZE, PPAGE * PSIZE + PSIZE);
+  $("pCount").textContent = int(rows.length) + " policies match";
+  $("ptable").innerHTML = '<thead><tr>' + PCOLS.map(function(c){ return '<th class="' + (c[2] ? 'n' : '') + '" data-k="' + c[0] + '">' + c[1] + (PSORT.k === c[0] ? (PSORT.dir < 0 ? ' &darr;' : ' &uarr;') : '') + '</th>'; }).join("") + '</tr></thead><tbody>' +
+    view.map(function(r){ return '<tr data-i="' + r.i + '"><td class="mono">' + r.id + '</td><td class="n"><span class="riskbar"><i style="width:' + Math.min(100, r.p / 0.3 * 100) + '%"></i></span>' + pp(r.p) + '</td><td class="n">top ' + (r.rank * 100 < 0.1 ? "0.1" : (r.rank * 100).toFixed(1)) + '%</td>' +
+      [0,1,2,3,4].map(function(j){ return '<td>' + esc(catLabel(DIMS[j], r.dims[j])) + '</td>'; }).join("") +
+      '<td class="n">' + fval(FI.MONTHLY_PREMIUM, r.x[FI.MONTHLY_PREMIUM]) + '</td><td>' + actBadge(r) + '</td><td class="n">' + money(r.ev, 2) + '</td></tr>'; }).join("") + '</tbody>';
+  $("ptable").querySelectorAll("th").forEach(function(th){ th.addEventListener("click", function(){ var k = th.dataset.k; PSORT = {k:k, dir: PSORT.k === k ? -PSORT.dir : (k === "id" || k[0] === "s" ? 1 : -1)}; renderPolicies(); }); });
+  $("ptable").querySelectorAll("tbody tr").forEach(function(tr){ tr.addEventListener("click", function(){ openProfile(+tr.dataset.i); }); });
+  $("pageInfo").textContent = "Page " + (PPAGE + 1) + " of " + pages; $("prev").disabled = PPAGE === 0; $("next").disabled = PPAGE >= pages - 1;
+}
+$("pAction").innerHTML += ACTS.map(function(a, i){ return '<option value="' + i + '">' + a + '</option>'; }).join("");
+$("pSearch").addEventListener("input", function(){ PPAGE = 0; renderPolicies(); });
+$("pAction").addEventListener("change", function(){ PPAGE = 0; renderPolicies(); });
+$("prev").addEventListener("click", function(){ PPAGE--; renderPolicies(); });
+$("next").addEventListener("click", function(){ PPAGE++; renderPolicies(); });
+$("nTop").textContent = int(NTOP); $("nRand").textContent = int(P.length - NTOP);
+
+// ---------- profile with live what-if ----------
+var PROF = {base:null, x:null};
+var KEYF = ["MONTHLY_PREMIUM","PREMIUM_CHANGE_3M","TENURE_BAND","STATE_CODE","POLICY_OWNER_AGE_BAND","PAYMENT_FREQUENCY_DESC","PAYMENT_METHOD_DESC","HOSPITAL_TIER","EXTRAS_TIER","PRODUCT_HOLDINGS","CHANNEL_ACQUISITION","SCALE"];
+function openProfile(i){ PROF.base = P[i]; PROF.x = P[i].x.slice(); go("profile"); }
+function gauge(p){
+  var a = Math.min(1, p / 0.5), ang = Math.PI * (1 - a), cx = 75, cy = 78, R = 62;
+  var x = cx + R * Math.cos(ang), y = cy - R * Math.sin(ang);
+  return '<svg class="gauge" viewBox="0 0 150 86" role="img" aria-label="Risk gauge"><path d="M13 78 A62 62 0 0 1 137 78" fill="none" stroke="var(--surface-2)" stroke-width="12" stroke-linecap="round"/>' +
+    '<path d="M13 78 A62 62 0 0 1 ' + x.toFixed(1) + ' ' + y.toFixed(1) + '" fill="none" stroke="' + (p > .1 ? 'var(--bad)' : p > .03 ? 'var(--warning)' : 'var(--good)') + '" stroke-width="12" stroke-linecap="round"/>' +
+    '<text x="75" y="72" text-anchor="middle" font-size="22" font-weight="700" fill="var(--ink)" font-family="ui-monospace,Menlo,monospace">' + pp(p) + '</text><text x="75" y="84" text-anchor="middle" font-size="9" fill="var(--muted)">scale to 50%</text></svg>';
+}
+function renderProfile(){
+  if (!PROF.base){ var t = P.filter(polPass).sort(function(a, b){ return b.p - a.p; })[0] || P[0]; PROF.base = t; PROF.x = t.x.slice(); }
+  var r = PROF.base;
+  var mx = Math.max.apply(null, r.why.map(function(w){ return Math.abs(w[1]); })) || 1;
+  var why = r.why.map(function(w){ var up = w[1] > 0, wd = Math.abs(w[1]) / mx * 50;
+    return '<div class="why"><div>' + esc(F[w[0]].label) + ': <b>' + esc(fval(w[0], r.x[w[0]])) + '</b></div><div class="wt"><div class="wf" style="' + (up ? 'left:50%' : 'right:50%') + ';width:' + wd + '%;background:' + (up ? 'var(--bad)' : 'var(--good)') + '"></div><div class="wm"></div></div><div class="note" style="color:' + (up ? 'var(--bad)' : 'var(--good)') + '">' + (up ? 'raises risk' : 'lowers risk') + '</div></div>'; }).join("");
+  var facts = ["POLICY_OWNER_AGE_BAND","STATE_CODE","TENURE_BAND","SCALE","HOSPITAL_TIER","EXTRAS_TIER","PRODUCT_HOLDINGS","PAYMENT_METHOD_DESC","PAYMENT_FREQUENCY_DESC","CHANNEL_ACQUISITION"].map(function(n){ return '<span class="fact">' + esc(F[FI[n]].label) + ': ' + esc(fval(FI[n], r.x[FI[n]])) + '</span>'; }).join("");
+  var fieldsHtml = function(names){ return names.map(function(n){ var fi = FI[n], f = F[fi], v = PROF.x[fi], ctl;
+    if (f.kind === "cat") ctl = '<select class="f" id="w' + fi + '" data-fi="' + fi + '"><option value="">unknown</option>' + f.cats.map(function(c, j){ return '<option value="' + j + '"' + (v === j ? ' selected' : '') + '>' + esc(c === "MISSING" ? "not recorded" : c) + '</option>'; }).join("") + '</select>';
+    else ctl = '<input type="number" id="w' + fi + '" data-fi="' + fi + '" step="' + (f.int ? 1 : "any") + '" value="' + (v === null ? "" : v) + '" placeholder="unknown">';
+    return '<div class="fld" id="fw' + fi + '"><label for="w' + fi + '">' + esc(f.label) + '</label>' + ctl + '</div>'; }).join(""); };
+  var others = F.map(function(f){ return f.name; }).filter(function(n){ return KEYF.indexOf(n) === -1; });
+  $("profile").innerHTML =
+    '<div class="grid c21"><div class="card"><div class="prof-head"><div>' + gauge(r.p) + '</div><div style="min-width:0;flex:1"><div class="note">De-identified policy</div><h2 class="mono" style="font-size:20px">' + r.id + '</h2>' +
+    '<div class="note">Riskier than ' + (r.rank < 0.001 ? '99.9%+' : pct(1 - r.rank)) + ' of the book &middot; ' + BANDS[r.band] + ' &middot; chance of cancelling within 3 months</div><div class="facts">' + facts + '</div></div></div>' +
+    (r.ip ? '<div class="callout" style="margin-top:12px"><b>Likely already cancelling.</b> This policy\'s premium is $0 or blank this month, which usually means a cancellation is being processed. It is shown for completeness; it is not an early warning.</div>' : '') +
+    '<h3 style="margin-top:14px"><span>Why the model scores it this way</span></h3>' + why + '</div>' +
+    '<div class="card"><h3><span>Best action</span><small>planner assumptions</small></h3><div id="profOpts"></div></div></div>' +
+    '<div class="card" style="margin-top:14px"><h3><span>What-if: change details and re-score live</span><span><button class="btn ghost" id="wReset">Reset</button></span></h3>' +
+    '<div class="grid c3" id="wiOut" style="margin-bottom:14px"></div><div class="fields">' + fieldsHtml(KEYF) + '</div>' +
+    '<details style="margin-top:12px"><summary style="cursor:pointer;font-weight:650">All other fields (' + others.length + ')</summary><div class="fields" style="margin-top:10px">' + fieldsHtml(others) + '</div></details>' +
+    '<p class="note">The model runs in your browser and gives the same scores as the Python model. It shows patterns the model learned, not what would cause a member to stay.</p></div>';
+  $("profile").querySelectorAll("[data-fi]").forEach(function(el){ el.addEventListener("input", function(){ var fi = +el.dataset.fi; PROF.x[fi] = el.value === "" ? null : +el.value; updateWhatIf(); }); });
+  $("wReset").addEventListener("click", function(){ PROF.x = PROF.base.x.slice(); renderProfile(); });
+  updateWhatIf();
+}
+function optsHtml(v){ var b = best(v), mx = Math.max.apply(null, v.map(Math.abs)) || 1;
+  return v.map(function(val, i){ return '<div class="opt' + (i === b ? ' best' : '') + '"><div>' + ACTS[i] + '</div><div class="ot"><div class="of" style="width:' + Math.max(2, Math.abs(val) / mx * 100) + '%;background:' + (val < 0 ? 'var(--bad)' : ACT_COL[i]) + ';opacity:' + (val < 0 ? .45 : 1) + '"></div></div><div class="mono" style="text-align:right">' + money(val, 2) + '</div></div>'; }).join("") +
+    '<div class="action"><div class="note">Recommended</div><b>' + (b === 4 ? "No action - not worth the cost" : ACTS[b] + (b % 2 ? " (" + Math.round(A.maxDisc * 100) + "% of annual premium)" : "")) + '</b><div class="note">expected net value ' + money(b === 4 ? 0 : v[b], 2) + '</div></div>'; }
+function updateWhatIf(){
+  var b = PROF.base, p1 = scoreX(PROF.x), r1 = riskierThan(p1), d = p1 - b.p, n = 0;
+  F.forEach(function(f, fi){ var ch = PROF.x[fi] !== b.x[fi]; if (ch) n++; var el = $("fw" + fi); if (el) el.classList.toggle("ch", ch); });
+  var v0 = optVals(b.p, premAnnual(b.x)), v1 = optVals(p1, premAnnual(PROF.x)), b0 = best(v0), b1 = best(v1);
+  $("profOpts").innerHTML = optsHtml(v1);
+  $("wiOut").innerHTML =
+    '<div class="card kpi" style="box-shadow:none"><div class="v">' + pp(p1) + '</div><div class="l">chance of cancelling (was ' + pp(b.p) + ')</div><div class="d"><span class="delta ' + (d > 0 ? 'up' : d < 0 ? 'down' : '') + '">' + (d >= 0 ? '+' : '') + (d * 100).toFixed(2) + ' points</span> &middot; ' + n + ' field' + (n === 1 ? '' : 's') + ' changed</div></div>' +
+    '<div class="card kpi" style="box-shadow:none"><div class="v" style="font-size:22px">' + BANDS[bandOf(1 - r1)] + '</div><div class="l">riskier than ' + (r1 > .999 ? '99.9%+' : pct(r1)) + ' of the book</div></div>' +
+    '<div class="card kpi" style="box-shadow:none"><div class="v" style="font-size:18px">' + ACTS[b1] + '</div><div class="l">' + (b1 === b0 ? 'action unchanged' : 'was: ' + ACTS[b0]) + '</div></div>';
+}
+
+// ---------- segments ----------
+var HM = {row:"POLICY_OWNER_AGE_BAND", col:"TENURE_BAND", metric:"rate"};
+function renderSegments(){
+  var dims = DIMS.concat(["band"]);
+  ["hmRow","hmCol"].forEach(function(id, k){ var cur = k ? HM.col : HM.row;
+    $(id).innerHTML = dims.map(function(d){ return '<option value="' + d + '"' + (d === cur ? ' selected' : '') + '>' + DIM_LABEL[d] + '</option>'; }).join(""); });
+  $("hmMetric").innerHTML = [["rate","Cancellation rate"],["ep","Expected cancellations"],["n","Policies"]].map(function(m){ return '<button data-m="' + m[0] + '" class="' + (HM.metric === m[0] ? 'on' : '') + '">' + m[1] + '</button>'; }).join("");
+  $("hmMetric").querySelectorAll("button").forEach(function(b){ b.addEventListener("click", function(){ HM.metric = b.dataset.m; renderSegments(); }); });
+  var ri = colOf(HM.row), ci = colOf(HM.col), cell = {};
+  if (HM.row !== HM.col) for (var i = 0; i < C.length; i++){ var r = C[i];
+    if (!rowPassExcept2(r, HM.row, HM.col)) continue;
+    var k = r[ri] + "|" + r[ci], o = cell[k] || (cell[k] = {n:0, ep:0}); o.n += r[IN]; o.ep += r[IN + 1]; }
+  var rows = orderedCodes(HM.row).concat([-1]), cols = orderedCodes(HM.col).concat([-1]);
+  rows = rows.filter(function(rc){ return cols.some(function(cc){ return cell[rc + "|" + cc]; }); });
+  cols = cols.filter(function(cc){ return rows.some(function(rc){ return cell[rc + "|" + cc]; }); });
+  var vals = []; rows.forEach(function(rc){ cols.forEach(function(cc){ var o = cell[rc + "|" + cc]; if (o && o.n >= 50) vals.push(HM.metric === "rate" ? o.ep / o.n : o[HM.metric]); }); });
+  var mx = Math.max.apply(null, vals.concat([1e-9]));
+  var h = '<div class="hm" style="grid-template-columns:110px repeat(' + cols.length + ',minmax(64px,1fr))"><div></div>' + cols.map(function(cc){ return '<div class="hh">' + esc(catLabel(HM.col, cc)) + '</div>'; }).join("");
+  rows.forEach(function(rc){ h += '<div class="hh" style="text-align:right">' + esc(catLabel(HM.row, rc)) + '</div>';
+    cols.forEach(function(cc){ var o = cell[rc + "|" + cc];
+      if (!o || HM.row === HM.col){ h += '<div style="background:var(--surface-2)"></div>'; return; }
+      var v = HM.metric === "rate" ? o.ep / o.n : o[HM.metric], small = o.n < 50, a = small ? 0 : Math.min(1, v / mx);
+      var txt = small ? "&middot;" : HM.metric === "rate" ? pct(v, 1) : int(v);
+      h += '<div class="hc" data-r="' + rc + '" data-c="' + cc + '" style="background:color-mix(in srgb, var(--bad) ' + Math.round(a * 85) + '%, var(--surface-2));color:' + (a > .55 ? '#fff' : 'var(--ink)') + '" data-tip="<b>' + esc(catLabel(HM.row, rc)) + ' &middot; ' + esc(catLabel(HM.col, cc)) + '</b><br>' + int(o.n) + ' policies<br>' + int(o.ep) + ' expected cancellations (' + pct(o.ep / o.n, 2) + ')">' + txt + '</div>'; }); });
+  $("heatmap").innerHTML = h + '</div>';
+  $("hmNote").textContent = HM.row === HM.col ? "Pick two different dimensions." : "Cells with fewer than 50 policies are shown as a dot. Other filters in the top bar still apply.";
+  $("heatmap").querySelectorAll(".hc").forEach(function(c){ c.addEventListener("click", function(){ FILT[HM.row] = +c.dataset.r; FILT[HM.col] = +c.dataset.c; refresh(); }); });
+  $("hmRow").onchange = function(){ HM.row = this.value; renderSegments(); }; $("hmCol").onchange = function(){ HM.col = this.value; renderSegments(); };
+  // bars for the row dimension
+  $("segDimLab").textContent = "by " + DIM_LABEL[HM.row].toLowerCase();
+  var g = agg(HM.row, HM.row);
+  hbars($("segBars"), orderedCodes(HM.row).concat([-1]).filter(function(c){ return g[c] && g[c].n; }).map(function(c){ var o = g[c];
+    return {k:c, label:catLabel(HM.row, c), v:o.ep, txt:int(o.ep), sel:FILT[HM.row] === c, tip:int(o.n) + " policies, " + pct(o.ep / o.n, 2) + " rate"}; }), {onClick:function(c){ toggleFilter(HM.row, c); }});
+  // WA vs rest
+  var gs = agg("STATE_CODE", "STATE_CODE"), wa = cats("STATE_CODE").indexOf("WA"), w = {n:0, ep:0}, o = {n:0, ep:0};
+  Object.keys(gs).forEach(function(k){ var t = +k === wa ? w : o; t.n += gs[k].n; t.ep += gs[k].ep; });
+  hbars($("waBars"), [{k:0, label:"WA", v:w.n ? w.ep / w.n : 0, txt:pct(w.n ? w.ep / w.n : 0, 2), tip:int(w.n) + " policies"}, {k:1, label:"Other states", v:o.n ? o.ep / o.n : 0, txt:pct(o.n ? o.ep / o.n : 0, 2), color:"var(--phone)", tip:int(o.n) + " policies"}]);
+}
+function rowPassExcept2(r, a, b){ if (HIDE_IP && r[IIP] === 1) return false; for (var d in FILT){ if (d === a || d === b || FILT[d] === null) continue; if (r[colOf(d)] !== FILT[d]) return false; } return true; }
+
+// ---------- planner ----------
+var SL = [["digital","Digital success rate",0.02,0.5,0.01,function(v){ return pct(v, 0); }],["phoneMult","Phone vs digital effectiveness",1,3,0.05,function(v){ return v.toFixed(2) + "&times;"; }],
+  ["discMult","Extra success from a discount",1,2,0.05,function(v){ return v.toFixed(2) + "&times;"; }],["value","Value of keeping a policy",200,3000,50,function(v){ return money(v, 0); }],
+  ["phoneCost","Cost of a phone call",2,60,1,function(v){ return money(v, 0); }],["digitalCost","Cost of a digital message",0,2,0.05,function(v){ return money(v, 2); }],
+  ["maxDisc","Discount size (share of annual premium)",0,0.25,0.01,function(v){ return pct(v, 0); }],["phoneCap","Phone calls per month",0,20000,250,function(v){ return v >= 20000 ? "no limit" : int(v); }]];
+function buildSliders(){
+  $("sliders").innerHTML = '<h3><span>Assumptions</span></h3>' + SL.map(function(s){ return '<div class="sl"><div class="h"><label for="s_' + s[0] + '">' + s[1] + '</label><b id="v_' + s[0] + '"></b></div><input type="range" id="s_' + s[0] + '" min="' + s[2] + '" max="' + s[3] + '" step="' + s[4] + '" value="' + A[s[0]] + '"></div>'; }).join("") +
+    '<button class="btn ghost" id="sReset">Reset to baseline</button><p class="note">Baseline: HBF\'s $1,000 value, $20 call, $0.10 message, discounts up to 12%; our tested assumptions for success (20%), phone (1.5&times;) and discount (1.3&times;).</p>';
+  SL.forEach(function(s){ $("s_" + s[0]).addEventListener("input", function(){ A[s[0]] = +this.value; renderPlanner(); }); });
+  $("sReset").addEventListener("click", function(){ for (var k in DEF) A[k] = DEF[k]; SL.forEach(function(s){ $("s_" + s[0]).value = A[s[0]]; }); renderPlanner(); });
+}
+function plan(){
+  var res = [[0,0],[0,0],[0,0],[0,0],[0,0]], out = {saves:0, spend:0}, cand = [], r = rates();
+  function put(c, o, n){ if (n <= 0) return; res[o][0] += n; if (o === 4) return; res[o][1] += n * c.v[o]; out.saves += n * c.p * r[o]; out.spend += n * (o >= 2 ? A.phoneCost : A.digitalCost); }
+  D.book_cells.forEach(function(cl){ var c = {n:cl[0], p:cl[1], v:optVals(cl[1], cl[2])}; var np = c.v[0] >= c.v[1] ? 0 : 1; c.np = c.v[np] > 0 ? np : 4; var vnp = Math.max(0, c.v[np]);
+    c.ph = c.v[2] >= c.v[3] ? 2 : 3; c.gain = c.v[c.ph] - vnp; if (c.gain > 0) cand.push(c); else put(c, c.np, c.n); });
+  cand.sort(function(a, b){ return b.gain - a.gain; }); var cap = A.phoneCap >= 20000 ? Infinity : A.phoneCap;
+  cand.forEach(function(c){ var k = Math.min(c.n, cap); put(c, c.ph, k); cap -= k; put(c, c.np, c.n - k); });
+  out.res = res; out.total = res[0][1] + res[1][1] + res[2][1] + res[3][1]; return out;
+}
+function renderPlanner(){
+  SL.forEach(function(s){ $("v_" + s[0]).innerHTML = s[5](A[s[0]]); });
+  var R = plan(), N = L.n, calls = R.res[2][0] + R.res[3][0], disc = R.res[1][0] + R.res[3][0];
+  $("planSub").textContent = int(N) + " policies, " + mlabel(D.months.live);
+  $("planKpis").innerHTML = [[money(R.total), "expected net value this month"], [int(R.saves), "policies expected to be saved (of " + int(L.expected_cancellations) + " expected to cancel)"], [int(calls) + " calls", int(disc) + " discounts &middot; contact spend " + money(R.spend)]]
+    .map(function(k){ return '<div class="card kpi"><div class="v">' + k[0] + '</div><div class="l">' + k[1] + '</div></div>'; }).join("");
+  $("planBar").innerHTML = R.res.map(function(x, i){ return '<div style="width:' + (x[0] / N * 100) + '%;background:' + ACT_COL[i] + '" data-tip="' + ACTS[i] + ': ' + int(x[0]) + '"></div>'; }).join("");
+  $("planLegend").innerHTML = R.res.map(function(x, i){ return '<span><i class="sw" style="background:' + ACT_COL[i] + '"></i>' + ACTS[i] + ' ' + pct(x[0] / N) + '</span>'; }).join("");
+  $("planTable").innerHTML = '<thead><tr><th>Action</th><th class="n">Policies</th><th class="n">Share</th><th class="n">Expected value</th></tr></thead><tbody>' + R.res.map(function(x, i){ return '<tr><td>' + ACTS[i] + '</td><td class="n">' + int(x[0]) + '</td><td class="n">' + pct(x[0] / N) + '</td><td class="n">' + money(x[1], 0) + '</td></tr>'; }).join("") +
+    '<tr style="font-weight:700"><td>Total</td><td class="n">' + int(N) + '</td><td class="n">100%</td><td class="n">' + money(R.total, 0) + '</td></tr></tbody>';
+  var keep = A.digital, pts = []; for (var s = 1; s <= 10; s++){ A.digital = s * .05; pts.push([A.digital, plan().total]); } A.digital = keep;
+  var w = 420, h = 170, pl = 64, pr = 10, pt = 10, pb = 24, mx = Math.max.apply(null, pts.map(function(p){ return p[1]; }).concat([R.total])) * 1.1 || 1;
+  function X(v){ return pl + (v - .05) / .45 * (w - pl - pr); } function Y(v){ return h - pb - v / mx * (h - pt - pb); }
+  var g = [0, mx / 2, mx].map(function(t){ return '<line x1="' + pl + '" x2="' + (w - pr) + '" y1="' + Y(t) + '" y2="' + Y(t) + '" stroke="var(--border)"/><text x="' + (pl - 6) + '" y="' + (Y(t) + 4) + '" font-size="11" text-anchor="end" fill="var(--muted)">' + money(t) + '</text>'; }).join("") +
+    pts.map(function(p, i){ return i % 2 ? '' : '<text x="' + X(p[0]) + '" y="' + (h - 6) + '" font-size="11" text-anchor="middle" fill="var(--muted)">' + Math.round(p[0] * 100) + '%</text>'; }).join("") +
+    '<path d="M ' + pts.map(function(p){ return X(p[0]) + "," + Y(p[1]); }).join(" L ") + '" fill="none" stroke="var(--accent)" stroke-width="2.5"/>' + (A.digital >= .05 ? '<circle cx="' + X(A.digital) + '" cy="' + Y(R.total) + '" r="5.5" fill="var(--sel)" stroke="var(--surface)" stroke-width="2"/>' : '');
+  $("sweep").innerHTML = '<svg viewBox="0 0 ' + w + ' ' + h + '" width="100%" role="img" aria-label="Value by success rate">' + g + '</svg><p class="note">Digital success rate on the x-axis; the dot is your current setting.</p>';
+  var r = rates();
+  $("rules").innerHTML = '<ul><li>A phone call pays off above a <b>' + pct(A.phoneCost / (r[2] * A.value), 2) + '</b> chance of leaving.</li><li>A digital message pays off above <b>' + pct(A.digitalCost / (r[0] * A.value), 3) + '</b> (almost everyone).</li>' +
+    '<li>' + (A.maxDisc > 0 && A.discMult > 1 ? 'A discount beats no discount when the premium is below about <b>' + money((A.value - A.value / A.discMult) / A.maxDisc / 12, 0) + '/month</b>, whatever the risk.' : 'A discount is never worth it at these settings.') + '</li>' +
+    '<li>Exact total at the baseline: ' + money(DK.cost_benefit.baseline.total) + '; this view matches it to within ' + pct(Math.abs(baseApprox - DK.cost_benefit.baseline.total) / DK.cost_benefit.baseline.total, 2) + '.</li></ul>';
+  if (curPage === "dashboard") renderDashboard();
+}
+var baseApprox = plan().total;
+
+// ---------- performance ----------
+function renderPerformance(){
+  var i = +$("kSlider").value, k = PF.overall.k[i], prec = PF.overall.precision[i], rec = PF.overall.recall[i];
+  $("kVal").textContent = pct(k, 1) + " of policies (" + int(k * PF.n) + ")";
+  $("perfSub").textContent = mlabel(PF.month) + ": " + int(PF.n) + " policies, " + int(PF.pos) + " left within 3 months";
+  $("perfKpis").innerHTML = [[pct(rec), "of leavers are on the list (recall)"], [pct(prec), "of the list really leaves (precision)"], [(prec / PF.base_rate).toFixed(1) + "&times;", "better than contacting at random"], [pct(PF.roc_auc), "ROC-AUC for this month"]]
+    .map(function(x){ return '<div class="card kpi" style="box-shadow:none"><div class="v">' + x[0] + '</div><div class="l">' + x[1] + '</div></div>'; }).join("");
+  var w = 900, h = 220, pl = 50, pr = 16, pt = 10, pb = 28, K = PF.overall.k;
+  function X(v){ return pl + v / .3 * (w - pl - pr); } function Y(v){ return h - pb - v * (h - pt - pb); }
+  var g = [0, .25, .5, .75, 1].map(function(t){ return '<line x1="' + pl + '" x2="' + (w - pr) + '" y1="' + Y(t) + '" y2="' + Y(t) + '" stroke="var(--border)"/><text x="' + (pl - 6) + '" y="' + (Y(t) + 4) + '" font-size="11" text-anchor="end" fill="var(--muted)">' + (t * 100) + '%</text>'; }).join("");
+  [0, .05, .1, .15, .2, .25, .3].forEach(function(t){ g += '<text x="' + X(t) + '" y="' + (h - 8) + '" font-size="11" text-anchor="middle" fill="var(--muted)">' + Math.round(t * 100) + '%</text>'; });
+  g += '<path d="M ' + X(0) + ',' + Y(0) + ' L ' + X(.3) + ',' + Y(.3) + '" stroke="var(--muted)" stroke-dasharray="4 4" fill="none"/>';
+  g += '<path d="M ' + X(0) + ',' + Y(0) + ' L ' + K.map(function(kk, j){ return X(kk) + "," + Y(PF.overall.recall[j]); }).join(" L ") + '" fill="none" stroke="var(--accent)" stroke-width="3"/>';
+  g += '<path d="M ' + K.map(function(kk, j){ return X(kk) + "," + Y(PF.overall.precision[j]); }).join(" L ") + '" fill="none" stroke="var(--phone)" stroke-width="2.5"/>';
+  g += '<line x1="' + X(k) + '" x2="' + X(k) + '" y1="' + pt + '" y2="' + (h - pb) + '" stroke="var(--sel)" stroke-width="1.5"/><circle cx="' + X(k) + '" cy="' + Y(rec) + '" r="5" fill="var(--accent)"/><circle cx="' + X(k) + '" cy="' + Y(prec) + '" r="5" fill="var(--phone)"/>';
+  g += '<text x="' + (w - pr - 4) + '" y="' + (Y(PF.overall.recall[K.length - 1]) - 8) + '" text-anchor="end" font-size="12" font-weight="600" fill="var(--accent)">leavers caught</text><text x="' + (w - pr - 4) + '" y="' + (Y(PF.overall.precision[K.length - 1]) - 8) + '" text-anchor="end" font-size="12" font-weight="600" fill="var(--phone)">share of list who leave</text><text x="' + X(.29) + '" y="' + (Y(.29) - 6) + '" text-anchor="end" font-size="11" fill="var(--muted)">random list</text>';
+  $("capture").innerHTML = '<svg viewBox="0 0 ' + w + ' ' + h + '" width="100%" role="img" aria-label="Recall and precision by list size">' + g + '</svg><p class="note">x-axis: share of the book contacted, riskiest first. Drag the slider to move the line.</p>';
+  var types = ["Switcher","Leave PHI","System Lapsed","Non-Recoverable","(unclassified)"];
+  hbars($("perfType"), types.map(function(t, j){ var v = PF.by_type.by[t][i]; return {k:j, label:t === "(unclassified)" ? "Unclassified" : t, v:v, txt:pct(v), tip:int(PF.type_counts[t]) + " leavers of this type"}; }));
+  hbars($("perfLead"), ["1","2","3"].map(function(m, j){ var v = PF.by_lead.by[m][i]; var n = PF.by_lead.counts ? PF.by_lead.counts[m] : null; return {k:j, label:"Month " + m, v:v, txt:pct(v), color: j ? "" : "var(--accent-strong)", tip:"Leavers who cancelled in month " + m + " after the snapshot: " + pct(v) + " of them are in the riskiest " + pct(k, 1)}; }));
+  var cw = 300, ch = 170, cpl = 34, cpb = 22, mxv = Math.max.apply(null, PF.calibration.map(function(c){ return Math.max(c.pred, c.actual); })) * 1.1, bw = (cw - cpl - 6) / 10;
+  var cg = PF.calibration.map(function(c, j){ var x = cpl + j * bw, y1 = ch - cpb - c.pred / mxv * (ch - cpb - 8), y2 = ch - cpb - c.actual / mxv * (ch - cpb - 8);
+    return '<rect x="' + (x + 2) + '" y="' + y1 + '" width="' + (bw / 2 - 2) + '" height="' + (ch - cpb - y1) + '" fill="var(--accent)" data-tip="Decile ' + (j + 1) + ': predicted ' + pct(c.pred, 2) + '"/><rect x="' + (x + bw / 2) + '" y="' + y2 + '" width="' + (bw / 2 - 2) + '" height="' + (ch - cpb - y2) + '" fill="var(--phone)" data-tip="Decile ' + (j + 1) + ': actual ' + pct(c.actual, 2) + '"/>'; }).join("");
+  cg += '<line x1="' + cpl + '" x2="' + cw + '" y1="' + (ch - cpb) + '" y2="' + (ch - cpb) + '" stroke="var(--border)"/><text x="' + cpl + '" y="' + (ch - 6) + '" font-size="10.5" fill="var(--muted)">lowest risk</text><text x="' + cw + '" y="' + (ch - 6) + '" font-size="10.5" text-anchor="end" fill="var(--muted)">highest risk</text><text x="' + (cpl - 4) + '" y="14" font-size="10.5" text-anchor="end" fill="var(--muted)">' + pct(mxv, 0) + '</text>';
+  $("calib").innerHTML = '<svg viewBox="0 0 ' + cw + ' ' + ch + '" width="100%" role="img" aria-label="Predicted versus actual by decile">' + cg + '</svg><div class="legend"><span><i class="sw" style="background:var(--accent)"></i>predicted</span><span><i class="sw" style="background:var(--phone)"></i>actual</span></div>';
+}
+$("kSlider").addEventListener("input", renderPerformance);
+
+// ---------- insights ----------
+function renderInsights(){
+  var ev = {}; DK.leak_evidence.forEach(function(r){ ev[r.optin] = r; });
+  $("leak").innerHTML = '<p style="margin-top:0">The model only uses what HBF knows about a policy in advance. Three fields are left out because they are recorded as people leave:</p><ul>' +
+    '<li><b>Marketing opt-in.</b> It is never updated for any policy, and <b>' + pct(ev.U.ever_cancelled) + '</b> of "Unknown" policies eventually cancel (Yes: ' + pct(ev.Y.ever_cancelled) + ', No: ' + pct(ev.N.ever_cancelled) + '). Only ' + pct(ev.U.active_at_end, 0) + ' of them are still active at the end of the data.</li>' +
+    '<li><b>Blank income tier.</b> It is cleared while a cancellation is processed.</li>' +
+    '<li><b>This month\'s arrears flag.</b> HBF already acts on it, so the model uses the flag from two months earlier instead.</li></ul>' +
+    '<p style="margin-bottom:0"><b>Question for HBF:</b> how is opt-in populated? If it is genuinely captured at sign-up, it can be added back as a strong signal.</p>';
+  var tk = function(r, k){ return r.filter(function(x){ return Math.abs(x.top - k) < 1e-9; })[0]; };
+  var M = DK.model, t1 = tk(M.topk, .01), t5 = tk(M.topk, .05);
+  $("leakTable").innerHTML = '<tbody>' + [
+      ["ROC-AUC (a coin flip scores 50%)", pct(M.roc_auc)],
+      ["PR-AUC (random scores " + M.base_rate.toFixed(3) + ")", M.pr_auc.toFixed(3)],
+      ["Riskiest 1%: share who really leave", pct(t1.precision) + " (" + (t1.precision / M.base_rate).toFixed(0) + "&times; average)"],
+      ["Riskiest 5%: share of all leavers caught", pct(t5.recall)],
+      ["Policy-months tested", int(M.val_rows)]
+    ].map(function(r){ return '<tr><td>' + r[0] + '</td><td class="n">' + r[1] + '</td></tr>'; }).join("") + '</tbody>';
+  var CL = DK.clusters.slice().sort(function(a, b){ return a.cluster - b.cluster; }), names = ["Always flagged","Steady elevated","Last-minute jump","No warning"], cols = ["var(--accent-strong)","var(--accent)","var(--phone)","var(--muted)"];
+  $("clSub").textContent = int(DK.cluster_meta.n_leavers) + " leavers, median risk rank in the 6 months before leaving";
+  var w = 900, h = 220, pl = 66, prr = 150, pt = 10, pb = 26, lo = Math.log10(.004), hi = Math.log10(.6);
+  function X(i){ return pl + i / 5 * (w - pl - prr); } function Y(v){ return pt + (Math.log10(v) - lo) / (hi - lo) * (h - pt - pb); }
+  var g = '<rect x="' + pl + '" y="' + Y(.004) + '" width="' + (w - pl - prr) + '" height="' + (Y(.05) - Y(.004)) + '" fill="var(--accent-soft)"/>';
+  [.005, .01, .05, .1, .25, .5].forEach(function(t){ g += '<line x1="' + pl + '" x2="' + (w - prr) + '" y1="' + Y(t) + '" y2="' + Y(t) + '" stroke="var(--border)"/><text x="' + (pl - 6) + '" y="' + (Y(t) + 4) + '" text-anchor="end" font-size="11" fill="var(--muted)">top ' + (t * 100) + '%</text>'; });
+  ["5 mo before","4","3","2","1","last month"].forEach(function(s, i){ g += '<text x="' + X(i) + '" y="' + (h - 6) + '" text-anchor="middle" font-size="11" fill="var(--muted)">' + s + '</text>'; });
+  var vals = CL.map(function(c){ return ["m-5","m-4","m-3","m-2","m-1","m0"].map(function(k){ return c["median_top_pct_" + k]; }); });
+  var ends = vals.map(function(v, k){ return {k:k, y:Y(v[5]) + 4}; }).sort(function(a, b){ return a.y - b.y; }); for (var e = 1; e < ends.length; e++) if (ends[e].y - ends[e - 1].y < 16) ends[e].y = ends[e - 1].y + 16;
+  var ly = {}; ends.forEach(function(o){ ly[o.k] = o.y; });
+  vals.forEach(function(v, k){ g += '<path d="M ' + v.map(function(x, i){ return X(i) + "," + Y(x); }).join(" L ") + '" fill="none" stroke="' + cols[k] + '" stroke-width="3"/>' + v.map(function(x, i){ return '<circle cx="' + X(i) + '" cy="' + Y(x) + '" r="4" fill="' + cols[k] + '" data-tip="' + names[k] + ': median rank top ' + pct(x, 1) + '"/>'; }).join("") + '<text x="' + (X(5) + 10) + '" y="' + ly[k] + '" font-size="12.5" font-weight="600" fill="' + cols[k] + '">' + names[k] + '</text>'; });
+  $("clChart").innerHTML = '<svg viewBox="0 0 ' + w + ' ' + h + '" width="100%" role="img" aria-label="Risk paths of four leaver groups">' + g + '</svg>';
+  var desc = ["Top 1-2% for six months.", "Around the top 10% throughout.", "Ordinary until the final month; partly processing.", "Look like any member until they leave."];
+  $("clCards").innerHTML = CL.map(function(c, k){ return '<div class="ccard" style="--c:' + cols[k] + '"><b>' + names[k] + '</b><div class="cs">' + pct(c.share, 0) + '</div><div class="note">' + desc[k] + '</div></div>'; }).join("");
+  var dr = DK.drivers_overall;
+  hbars($("drivers"), dr.map(function(x, j){ return {k:j, label:x.label, v:x.share, txt:pct(x.share, 0)}; }));
+  $("drivers").querySelectorAll(".r").forEach(function(r){ r.style.gridTemplateColumns = "200px minmax(0,1fr) 50px"; r.style.cursor = "default"; });
+  $("method").innerHTML = ["LightGBM, " + T.length + " trees; trained Sep 2024 &ndash; Oct 2025, evaluated on later months it never saw (1-month gap).",
+    "Target: cancels within the next 3 months. Probabilities are calibrated (average predicted " + pct(DK.calibration.mean_pred, 2) + " vs actual " + pct(DK.calibration.actual_rate, 2) + ").",
+    "Predicts who is likely to leave, not who would stay because we called: that needs a randomised pilot.",
+    "Success rates and the phone/discount multipliers are assumptions; set them in the Retention planner.",
+    "About half of leavers give no warning in this data; catching them needs new signals.",
+    "Premium $0 or blank in the snapshot usually means a cancellation is already being processed; those policies are hidden by default."].map(function(s){ return "<li>" + s + "</li>"; }).join("");
+}
+
+// ---------- navigation ----------
+var ICON = {
+  dashboard:'<path d="M3 13h7V3H3zM14 21h7V11h-7zM3 21h7v-6H3zM14 3v6h7V3z" fill="none" stroke="currentColor" stroke-width="1.8"/>',
+  policies:'<path d="M4 6h16M4 12h16M4 18h10" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/>',
+  profile:'<circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6" fill="none" stroke="currentColor" stroke-width="1.8"/>',
+  segments:'<path d="M3 3h8v8H3zM13 3h8v8h-8zM3 13h8v8H3zM13 13h8v8h-8z" fill="none" stroke="currentColor" stroke-width="1.8"/>',
+  planner:'<path d="M4 20V10M10 20V4M16 20v-7M22 20H2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>',
+  performance:'<path d="M3 20l6-7 4 4 8-10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>',
+  insights:'<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2V16h5v-.1c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z" fill="none" stroke="currentColor" stroke-width="1.8"/>'
+};
+var PAGES = [["Overview", [["dashboard","Dashboard"],["policies","At-risk policies"],["profile","Policy profile"],["segments","Segments"]]], ["Action", [["planner","Retention planner"]]], ["Model", [["performance","Model performance"],["insights","Insights & method"]]]];
+var TITLES = {dashboard:"Dashboard", policies:"At-risk policies", profile:"Policy profile", segments:"Segments", planner:"Retention planner", performance:"Model performance", insights:"Insights & method"};
+var USES_FILTERS = {dashboard:1, policies:1, segments:1, profile:0, planner:0, performance:0, insights:0};
+$("nav").innerHTML = PAGES.map(function(s){ return '<div class="navsec">' + s[0] + '</div>' + s[1].map(function(p){ return '<a data-p="' + p[0] + '"><svg viewBox="0 0 24 24" aria-hidden="true">' + ICON[p[0]] + '</svg>' + p[1] + '</a>'; }).join(""); }).join("");
+$("nav").querySelectorAll("a").forEach(function(a){ a.addEventListener("click", function(){ go(a.dataset.p); }); });
+document.addEventListener("click", function(e){ var t = e.target.closest("[data-go]"); if (t){ e.preventDefault(); go(t.dataset.go); } });
+var curPage = "dashboard";
+function go(p){
+  curPage = p;
+  document.querySelectorAll(".page").forEach(function(s){ s.classList.toggle("on", s.id === "pg-" + p); });
+  $("nav").querySelectorAll("a").forEach(function(a){ a.classList.toggle("on", a.dataset.p === p); });
+  $("title").textContent = TITLES[p]; $("filterbar").style.display = USES_FILTERS[p] ? "" : "none";
+  try { history.replaceState(null, "", "#" + p); } catch(e){}
+  window.scrollTo(0, 0); refresh();
+}
+function refresh(){
+  syncFilterBar();
+  if (curPage === "dashboard") renderDashboard();
+  else if (curPage === "policies") renderPolicies();
+  else if (curPage === "profile") renderProfile();
+  else if (curPage === "segments") renderSegments();
+  else if (curPage === "planner") renderPlanner();
+  else if (curPage === "performance") renderPerformance();
+  else if (curPage === "insights") renderInsights();
+}
+buildFilterBar(); buildSliders();
+var start = (location.hash || "#dashboard").slice(1);
+go(TITLES[start] ? start : "dashboard");
+})();
+</script>
+</body>
+</html>

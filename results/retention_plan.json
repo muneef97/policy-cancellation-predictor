@@ -1,0 +1,274 @@
+{
+  "calibration": {
+    "scale_pos_weight": 59.420407177919046,
+    "mean_predicted": 0.015722122031295558,
+    "actual_rate": 0.018489822937778937,
+    "top1_mean_predicted": 0.16882022851028206,
+    "top1_actual": 0.20482822655524605,
+    "deciles": [
+      {
+        "decile": 0,
+        "predicted": 0.001351047249980479,
+        "actual": 0.0023953652467783265,
+        "policies": 107708
+      },
+      {
+        "decile": 1,
+        "predicted": 0.0028968157067944707,
+        "actual": 0.005022839529097189,
+        "policies": 107708
+      },
+      {
+        "decile": 2,
+        "predicted": 0.004778607155792456,
+        "actual": 0.007167527017491737,
+        "policies": 107708
+      },
+      {
+        "decile": 3,
+        "predicted": 0.006820944493009225,
+        "actual": 0.009423626842945742,
+        "policies": 107708
+      },
+      {
+        "decile": 4,
+        "predicted": 0.00939295175616444,
+        "actual": 0.011735432836929476,
+        "policies": 107708
+      },
+      {
+        "decile": 5,
+        "predicted": 0.01226693903647976,
+        "actual": 0.015477174185521832,
+        "policies": 107707
+      },
+      {
+        "decile": 6,
+        "predicted": 0.015505095428510515,
+        "actual": 0.01797452371225907,
+        "policies": 107708
+      },
+      {
+        "decile": 7,
+        "predicted": 0.01981353625001302,
+        "actual": 0.022059642737772497,
+        "policies": 107708
+      },
+      {
+        "decile": 8,
+        "predicted": 0.027035222732915327,
+        "actual": 0.028410145950161548,
+        "policies": 107708
+      },
+      {
+        "decile": 9,
+        "predicted": 0.05736002842412818,
+        "actual": 0.0652319233483121,
+        "policies": 107708
+      }
+    ]
+  },
+  "plan": {
+    "month": "2026-01-31",
+    "policies": 538738,
+    "expected_cancellations_3m": 8653.392447682494,
+    "central": {
+      "success_rate": 0.2,
+      "total_value": 1793591.2909659704,
+      "policies": 538738,
+      "options": {
+        "Digital, no discount": {
+          "policies": 373168,
+          "share": 0.6926706488125953,
+          "value": 945745.7023934061
+        },
+        "Digital + discount": {
+          "policies": 161648,
+          "share": 0.30004937464964415,
+          "value": 739953.6391590829
+        },
+        "Phone, no discount": {
+          "policies": 798,
+          "share": 0.0014812394893250523,
+          "value": 56948.56158364319
+        },
+        "Phone + discount": {
+          "policies": 698,
+          "share": 0.001295620505700359,
+          "value": 50943.38782983823
+        },
+        "No action": {
+          "policies": 2426,
+          "share": 0.004503116542735059,
+          "value": 0.0
+        }
+      }
+    },
+    "sensitivity": [
+      {
+        "success_rate": 0.1,
+        "total_value": 863122.7970583492,
+        "policies": 538738,
+        "options": {
+          "Digital, no discount": {
+            "policies": 364986,
+            "share": 0.6774833035724229,
+            "value": 472926.5530504733
+          },
+          "Digital + discount": {
+            "policies": 162128,
+            "share": 0.30094034577104267,
+            "value": 377282.15662233357
+          },
+          "Phone, no discount": {
+            "policies": 116,
+            "share": 0.0002153180210046442,
+            "value": 6246.226267369058
+          },
+          "Phone + discount": {
+            "policies": 131,
+            "share": 0.00024316086854834818,
+            "value": 6667.861118173117
+          },
+          "No action": {
+            "policies": 11377,
+            "share": 0.021117871766981353,
+            "value": 0.0
+          }
+        }
+      },
+      {
+        "success_rate": 0.2,
+        "total_value": 1793591.2909659704,
+        "policies": 538738,
+        "options": {
+          "Digital, no discount": {
+            "policies": 373168,
+            "share": 0.6926706488125953,
+            "value": 945745.7023934061
+          },
+          "Digital + discount": {
+            "policies": 161648,
+            "share": 0.30004937464964415,
+            "value": 739953.6391590829
+          },
+          "Phone, no discount": {
+            "policies": 798,
+            "share": 0.0014812394893250523,
+            "value": 56948.56158364319
+          },
+          "Phone + discount": {
+            "policies": 698,
+            "share": 0.001295620505700359,
+            "value": 50943.38782983823
+          },
+          "No action": {
+            "policies": 2426,
+            "share": 0.004503116542735059,
+            "value": 0.0
+          }
+        }
+      },
+      {
+        "success_rate": 0.3,
+        "total_value": 2737888.6070251064,
+        "policies": 538738,
+        "options": {
+          "Digital, no discount": {
+            "policies": 373874,
+            "share": 0.6939811188369857,
+            "value": 1406875.1304573966
+          },
+          "Digital + discount": {
+            "policies": 160892,
+            "share": 0.2986460951334415,
+            "value": 1081265.1683537625
+          },
+          "Phone, no discount": {
+            "policies": 1433,
+            "share": 0.0026599200353418545,
+            "value": 126456.15777480796
+          },
+          "Phone + discount": {
+            "policies": 1465,
+            "share": 0.0027193181101017564,
+            "value": 123292.1504391399
+          },
+          "No action": {
+            "policies": 1074,
+            "share": 0.0019935478841292056,
+            "value": 0.0
+          }
+        }
+      }
+    ],
+    "average_max_discount": 447.2164309778677,
+    "discount_breakeven_lift": 1.8090262736444724,
+    "discount_pays_below_monthly_premium": 160.2564102564103,
+    "phone_breakeven_probability": 0.06666666666666665,
+    "blank_premiums_filled": 1394,
+    "train_median_premium": 287.3999938964844
+  },
+  "by_type": {
+    "Switcher": {
+      "leavers": 8829,
+      "mean_probability": 0.0285951583025471,
+      "best_mean_value": 9.176819828926453,
+      "options_mean_value": {
+        "Digital, no discount": 8.47854749076413,
+        "Digital + discount": 6.997744576629896,
+        "Phone, no discount": -7.132178763853801,
+        "Phone + discount": -9.353383135055157
+      },
+      "share_worth_a_call": 0.022652622041001245
+    },
+    "Leave PHI": {
+      "leavers": 2310,
+      "mean_probability": 0.04677441834267059,
+      "best_mean_value": 10.31610659255031,
+      "options_mean_value": {
+        "Digital, no discount": 9.254883668534118,
+        "Digital + discount": 8.672681550945844,
+        "Phone, no discount": -5.967674497198821,
+        "Phone + discount": -6.840977673581234
+      },
+      "share_worth_a_call": 0.03939393939393939
+    },
+    "System Lapsed": {
+      "leavers": 4061,
+      "mean_probability": 0.046029630852884036,
+      "best_mean_value": 7.510710396574635,
+      "options_mean_value": {
+        "Digital, no discount": 6.8044446279326065,
+        "Digital + discount": 6.4308112041793475,
+        "Phone, no discount": -9.64333305810109,
+        "Phone + discount": -10.203783193730981
+      },
+      "share_worth_a_call": 0.018468357547402118
+    },
+    "Non-Recoverable": {
+      "leavers": 3240,
+      "mean_probability": 0.11115428513447177,
+      "best_mean_value": 2.2109982989085295,
+      "options_mean_value": {
+        "Digital, no discount": 2.1230857026894356,
+        "Digital + discount": 1.8943118884999461,
+        "Phone, no discount": -16.665371445965846,
+        "Phone + discount": -17.00853216725008
+      },
+      "share_worth_a_call": 0.0
+    },
+    "(unclassified)": {
+      "leavers": 1475,
+      "mean_probability": 0.04342988212916992,
+      "best_mean_value": 4.506246365683246,
+      "options_mean_value": {
+        "Digital, no discount": 4.242988212916993,
+        "Digital + discount": 3.7186743044309734,
+        "Phone, no discount": -13.48551768062451,
+        "Phone + discount": -14.271988543353539
+      },
+      "share_worth_a_call": 0.014915254237288136
+    }
+  }
+}

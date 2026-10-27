@@ -1,0 +1,120 @@
+{
+ "POLICY_OWNER_AGE_BAND": {
+  "18-24": 0.0,
+  "25-34": 1.0,
+  "35-44": 2.0,
+  "45-54": 3.0,
+  "55-64": 4.0,
+  "65-74": 5.0,
+  "75+": 6.0
+ },
+ "SCALE": {
+  "Couple": 0.0,
+  "Extended Family": 1.0,
+  "Extended Parent Plus": 2.0,
+  "Family": 3.0,
+  "Parent Plus": 4.0,
+  "Single": 5.0
+ },
+ "STATE_CODE": {
+  "ACT": 0.0,
+  "NSW": 1.0,
+  "NT": 2.0,
+  "QLD": 3.0,
+  "SA": 4.0,
+  "TAS": 5.0,
+  "VIC": 6.0,
+  "WA": 7.0
+ },
+ "CHANNEL_ACQUISITION": {
+  "Branch": 0.0,
+  "Broker": 1.0,
+  "Digital": 2.0,
+  "Head Office": 3.0,
+  "Legacy": 4.0,
+  "MCC": 5.0,
+  "Other": 6.0
+ },
+ "TENURE_BAND": {
+  "0-3m": 0.0,
+  "1-2y": 1.0,
+  "10-15y": 2.0,
+  "15-20y": 3.0,
+  "2-3y": 4.0,
+  "20+y": 5.0,
+  "3-5y": 6.0,
+  "3-6m": 7.0,
+  "5-10y": 8.0,
+  "6-12m": 9.0
+ },
+ "YOUNGEST_DEPENDANT_AGE_BAND": {
+  "0-16": 0.0,
+  "17-24": 1.0,
+  "25-34": 2.0,
+  "MISSING": 3.0
+ },
+ "PRODUCT_HOLDINGS": {
+  "Ambulance": 0.0,
+  "Combined": 1.0,
+  "Extras": 2.0,
+  "Hospital": 3.0
+ },
+ "HOSPITAL_TIER": {
+  "Basic": 0.0,
+  "Bronze": 1.0,
+  "Gold": 2.0,
+  "MISSING": 3.0,
+  "OVC": 4.0,
+  "Silver": 5.0
+ },
+ "EXTRAS_TIER": {
+  "High": 0.0,
+  "Low": 1.0,
+  "MISSING": 2.0,
+  "Mid": 3.0,
+  "Mid_High": 4.0,
+  "Mid_Low": 5.0
+ },
+ "HOSPITAL_EXCESS_AMT": {
+  "250": 0.0,
+  "300": 1.0,
+  "500": 2.0,
+  "750": 3.0,
+  "MISSING": 4.0,
+  "NIL": 5.0
+ },
+ "PAYMENT_METHOD_DESC": {
+  "Branch": 0.0,
+  "Direct Debit": 1.0,
+  "Group": 2.0,
+  "Unknown": 3.0
+ },
+ "PAYMENT_FREQUENCY_DESC": {
+  "Fortnightly": 0.0,
+  "Half-Yearly": 1.0,
+  "Monthly": 2.0,
+  "Quarterly": 3.0,
+  "Unknown": 4.0,
+  "Yearly": 5.0
+ },
+ "ARREARS_FLAG": {
+  "N": 0.0,
+  "Y": 1.0
+ },
+ "MARKETING_OPTIN": {
+  "N": 0.0,
+  "U": 1.0,
+  "Y": 2.0
+ },
+ "CALL_NEGATIVE_SENTIMENT": {
+  "U": 0.0,
+  "Y": 1.0
+ },
+ "RESOLUTION_TIME": {
+  "31 - 60 days": 0.0,
+  "6 - 30 days": 1.0,
+  "61+ days": 2.0,
+  "<= 5 days": 3.0,
+  "MISSING": 4.0
+ }
+}

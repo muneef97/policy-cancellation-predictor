@@ -1,6 +1,7 @@
+# HBF raw data is never committed
+data/
+work/
+logs/
 __pycache__/
-*.pyc
 .DS_Store
-*.parquet
-*.csv
-.ipynb_checkpoints/
+models/*/val_scores.parquet

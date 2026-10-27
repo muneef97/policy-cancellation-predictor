@@ -1,0 +1,9 @@
+# Python 3.10 or newer. Results were produced (and checked identical on two machines) with:
+#   python 3.10.12, pandas 2.3.3, numpy 2.2.6, pyarrow 25.0.1, duckdb 1.5.6, lightgbm 4.6.0, scikit-learn 1.7.2
+# Other versions should work; a different LightGBM version can shift the numbers very slightly.
+pandas>=2.0
+numpy>=1.24
+pyarrow>=14
+duckdb>=0.10
+lightgbm>=4.0
+scikit-learn>=1.3

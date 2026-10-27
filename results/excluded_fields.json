@@ -1,0 +1,25 @@
+{
+  "marketing_optin_by_value": [
+    {
+      "optin": "N",
+      "policies": 149136,
+      "ever_cancelled": 0.02134964059650252,
+      "active_at_end": 0.9975659800450596,
+      "ever_changes": 0.0
+    },
+    {
+      "optin": "U",
+      "policies": 74278,
+      "ever_cancelled": 0.9366568835994508,
+      "active_at_end": 0.04065806833786585,
+      "ever_changes": 0.0
+    },
+    {
+      "optin": "Y",
+      "policies": 406955,
+      "ever_cancelled": 0.00823678293668833,
+      "active_at_end": 0.9983511690481749,
+      "ever_changes": 0.0
+    }
+  ]
+}

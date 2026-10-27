@@ -1,0 +1,174 @@
+{
+  "by_type": [
+    {
+      "type": "Switcher",
+      "months_ahead": 1,
+      "leavers": 2297,
+      "caught_in_top5": 0.2703526338702656,
+      "caught_in_top10": 0.3787548976926426,
+      "ranking": 0.7389008773025542
+    },
+    {
+      "type": "Switcher",
+      "months_ahead": 2,
+      "leavers": 3017,
+      "caught_in_top5": 0.11203181968843222,
+      "caught_in_top10": 0.22903546569439842,
+      "ranking": 0.665299297168255
+    },
+    {
+      "type": "Switcher",
+      "months_ahead": 3,
+      "leavers": 3515,
+      "caught_in_top5": 0.12375533428165007,
+      "caught_in_top10": 0.23357041251778093,
+      "ranking": 0.6607986946024026
+    },
+    {
+      "type": "Leave PHI",
+      "months_ahead": 1,
+      "leavers": 636,
+      "caught_in_top5": 0.3836477987421384,
+      "caught_in_top10": 0.5078616352201258,
+      "ranking": 0.8191567651308881
+    },
+    {
+      "type": "Leave PHI",
+      "months_ahead": 2,
+      "leavers": 822,
+      "caught_in_top5": 0.26763990267639903,
+      "caught_in_top10": 0.3844282238442822,
+      "ranking": 0.7830746020379126
+    },
+    {
+      "type": "Leave PHI",
+      "months_ahead": 3,
+      "leavers": 852,
+      "caught_in_top5": 0.25,
+      "caught_in_top10": 0.36032863849765256,
+      "ranking": 0.7696396022910654
+    },
+    {
+      "type": "System Lapsed",
+      "months_ahead": 1,
+      "leavers": 1465,
+      "caught_in_top5": 0.36382252559726963,
+      "caught_in_top10": 0.4696245733788396,
+      "ranking": 0.8155826465612555
+    },
+    {
+      "type": "System Lapsed",
+      "months_ahead": 2,
+      "leavers": 1356,
+      "caught_in_top5": 0.3141592920353982,
+      "caught_in_top10": 0.42035398230088494,
+      "ranking": 0.79185655837828
+    },
+    {
+      "type": "System Lapsed",
+      "months_ahead": 3,
+      "leavers": 1240,
+      "caught_in_top5": 0.28225806451612906,
+      "caught_in_top10": 0.4096774193548387,
+      "ranking": 0.7843999068689071
+    },
+    {
+      "type": "Non-Recoverable",
+      "months_ahead": 1,
+      "leavers": 1034,
+      "caught_in_top5": 0.5957446808510638,
+      "caught_in_top10": 0.6460348162475822,
+      "ranking": 0.8605443129780302
+    },
+    {
+      "type": "Non-Recoverable",
+      "months_ahead": 2,
+      "leavers": 1132,
+      "caught_in_top5": 0.38162544169611307,
+      "caught_in_top10": 0.44787985865724383,
+      "ranking": 0.7800136951014203
+    },
+    {
+      "type": "Non-Recoverable",
+      "months_ahead": 3,
+      "leavers": 1074,
+      "caught_in_top5": 0.28212290502793297,
+      "caught_in_top10": 0.3547486033519553,
+      "ranking": 0.7468415919315616
+    },
+    {
+      "type": "(unclassified)",
+      "months_ahead": 1,
+      "leavers": 482,
+      "caught_in_top5": 0.2572614107883817,
+      "caught_in_top10": 0.3049792531120332,
+      "ranking": 0.7126361022179579
+    },
+    {
+      "type": "(unclassified)",
+      "months_ahead": 2,
+      "leavers": 516,
+      "caught_in_top5": 0.1744186046511628,
+      "caught_in_top10": 0.2364341085271318,
+      "ranking": 0.6795280624871476
+    },
+    {
+      "type": "(unclassified)",
+      "months_ahead": 3,
+      "leavers": 477,
+      "caught_in_top5": 0.13836477987421383,
+      "caught_in_top10": 0.22431865828092243,
+      "ranking": 0.6787519622433207
+    },
+    {
+      "type": "All leavers",
+      "months_ahead": 1,
+      "leavers": 5914,
+      "caught_in_top5": 0.3615150490361853,
+      "caught_in_top10": 0.45586743320933376,
+      "ranking": 0.7856545512153856
+    },
+    {
+      "type": "All leavers",
+      "months_ahead": 2,
+      "leavers": 6843,
+      "caught_in_top5": 0.22007891275756247,
+      "caught_in_top10": 0.32237322811632324,
+      "ranking": 0.7245747155766349
+    },
+    {
+      "type": "All leavers",
+      "months_ahead": 3,
+      "leavers": 7158,
+      "caught_in_top5": 0.1909751327186365,
+      "caught_in_top10": 0.2967309304274937,
+      "ranking": 0.7092719744232243
+    }
+  ],
+  "exact_month_models": [
+    {
+      "months_ahead": 1,
+      "roc_auc": 0.758375374962915,
+      "pr_auc": 0.03674390639701622,
+      "base_rate": 0.005490776442582206,
+      "top1_precision": 0.09052084300436357,
+      "top1_lift": 16.48598225605291
+    },
+    {
+      "months_ahead": 2,
+      "roc_auc": 0.7080940188270148,
+      "pr_auc": 0.019119546659207374,
+      "base_rate": 0.006388371539398692,
+      "top1_precision": 0.050877520537714715,
+      "top1_lift": 7.964082900304134
+    },
+    {
+      "months_ahead": 3,
+      "roc_auc": 0.6964431408777109,
+      "pr_auc": 0.016995452531456602,
+      "base_rate": 0.006725408288093265,
+      "top1_precision": 0.03823750469748215,
+      "top1_lift": 5.68552912470433
+    }
+  ]
+}

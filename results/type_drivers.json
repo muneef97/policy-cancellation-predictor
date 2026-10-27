@@ -1,0 +1,1992 @@
+{
+  "Switcher": {
+    "val_leavers": 8829,
+    "rate": 0.00828241836484855,
+    "best_round": 111,
+    "ranking": 0.7458589461798479,
+    "ranking_of_final_model": 0.6826560999261567,
+    "caught_in_top5": 0.2344546381243629,
+    "clues": [
+      {
+        "clue": "How long they've been a member",
+        "share": 0.18835976868905543
+      },
+      {
+        "clue": "State",
+        "share": 0.12349093789006624
+      },
+      {
+        "clue": "Age",
+        "share": 0.0976956182058954
+      },
+      {
+        "clue": "How often they pay",
+        "share": 0.08239257564467499
+      },
+      {
+        "clue": "Monthly premium",
+        "share": 0.07079400763896683
+      },
+      {
+        "clue": "Recent premium change",
+        "share": 0.06272761863158868
+      },
+      {
+        "clue": "Hospital excess amount",
+        "share": 0.06263354081755722
+      },
+      {
+        "clue": "Negative-sentiment calls, last 6mo",
+        "share": 0.04365048767506569
+      }
+    ],
+    "clue_groups": [
+      {
+        "group": "Membership history",
+        "share": 0.25407283995046837
+      },
+      {
+        "group": "State",
+        "share": 0.1549595990377217
+      },
+      {
+        "group": "Price and cover level",
+        "share": 0.1391149292789331
+      },
+      {
+        "group": "Age and household",
+        "share": 0.12838820441195842
+      },
+      {
+        "group": "Payment habits",
+        "share": 0.10931370560684309
+      },
+      {
+        "group": "Claims",
+        "share": 0.07873175085868224
+      },
+      {
+        "group": "Recent price rise",
+        "share": 0.07871222615861284
+      },
+      {
+        "group": "Service experience",
+        "share": 0.05670674469678024
+      }
+    ],
+    "shuffle_top": [
+      {
+        "clue": "How long they've been a member",
+        "ranking_lost": 0.038480290708649556
+      },
+      {
+        "clue": "State",
+        "ranking_lost": 0.0330372091969644
+      },
+      {
+        "clue": "Recent premium change",
+        "ranking_lost": 0.027818108883603143
+      },
+      {
+        "clue": "Monthly premium",
+        "ranking_lost": 0.02357599539396671
+      },
+      {
+        "clue": "Negative-sentiment calls, last 6mo",
+        "ranking_lost": 0.01290632800996705
+      },
+      {
+        "clue": "Age",
+        "ranking_lost": 0.009473698040548095
+      },
+      {
+        "clue": "Hospital excess amount",
+        "ranking_lost": 0.006113421301015554
+      },
+      {
+        "clue": "How often they pay",
+        "ranking_lost": 0.005593644429342626
+      }
+    ],
+    "signals": [
+      {
+        "field": "TENURE_BAND",
+        "label": "How long they've been a member",
+        "shap_share": 0.18835976868905543,
+        "shuffle_drop": 0.038480290708649556,
+        "highest": {
+          "value": "0-3m",
+          "rate": 0.026885778990767085,
+          "policies": 17221
+        },
+        "lowest": {
+          "value": "20+y",
+          "rate": 0.0028206777596247443,
+          "policies": 351334
+        },
+        "times": 9.531673335965857,
+        "rates": [
+          {
+            "value": "0-3m",
+            "rate": 0.026885778990767085,
+            "policies": 17221
+          },
+          {
+            "value": "3-6m",
+            "rate": 0.01702375901569792,
+            "policies": 18856
+          },
+          {
+            "value": "3-5y",
+            "rate": 0.01519626931588295,
+            "policies": 105289
+          },
+          {
+            "value": "2-3y",
+            "rate": 0.01431629179971227,
+            "policies": 56998
+          },
+          {
+            "value": "6-12m",
+            "rate": 0.01370835080476083,
+            "policies": 31003
+          },
+          {
+            "value": "1-2y",
+            "rate": 0.01306534600042395,
+            "policies": 51893
+          },
+          {
+            "value": "5-10y",
+            "rate": 0.010097690987706479,
+            "policies": 191727
+          },
+          {
+            "value": "10-15y",
+            "rate": 0.0073557323859933105,
+            "policies": 139619
+          },
+          {
+            "value": "15-20y",
+            "rate": 0.005604930771265911,
+            "policies": 102053
+          },
+          {
+            "value": "20+y",
+            "rate": 0.0028206777596247443,
+            "policies": 351334
+          }
+        ]
+      },
+      {
+        "field": "STATE_CODE",
+        "label": "State",
+        "shap_share": 0.12349093789006624,
+        "shuffle_drop": 0.0330372091969644,
+        "highest": {
+          "value": "NSW",
+          "rate": 0.025849100578426595,
+          "policies": 47197
+        },
+        "lowest": {
+          "value": "WA",
+          "rate": 0.005809937254884651,
+          "policies": 906206
+        },
+        "times": 4.449118715816458,
+        "rates": [
+          {
+            "value": "NSW",
+            "rate": 0.025849100578426595,
+            "policies": 47197
+          },
+          {
+            "value": "SA",
+            "rate": 0.02391416752843847,
+            "policies": 7736
+          },
+          {
+            "value": "VIC",
+            "rate": 0.021351682351424518,
+            "policies": 62056
+          },
+          {
+            "value": "QLD",
+            "rate": 0.02023788389845553,
+            "policies": 33798
+          },
+          {
+            "value": "TAS",
+            "rate": 0.018427114182296808,
+            "policies": 3039
+          },
+          {
+            "value": "ACT",
+            "rate": 0.017407118732138217,
+            "policies": 3849
+          },
+          {
+            "value": "NT",
+            "rate": 0.01278409090909091,
+            "policies": 2112
+          },
+          {
+            "value": "WA",
+            "rate": 0.005809937254884651,
+            "policies": 906206
+          }
+        ]
+      },
+      {
+        "field": "MONTHLY_PREMIUM",
+        "label": "Monthly premium",
+        "shap_share": 0.07079400763896683,
+        "shuffle_drop": 0.02357599539396671,
+        "highest": {
+          "value": "$121 to $211",
+          "rate": 0.010737851866452661,
+          "policies": 213078
+        },
+        "lowest": {
+          "value": "$525 to $1,689",
+          "rate": 0.0055804674229627295,
+          "policies": 212527
+        },
+        "times": 1.9241850283487223,
+        "rates": [
+          {
+            "value": "(blank)",
+            "rate": 0.03667697746354397,
+            "policies": 2263
+          },
+          {
+            "value": "$121 to $211",
+            "rate": 0.010737851866452661,
+            "policies": 213078
+          },
+          {
+            "value": "$335 to $525",
+            "rate": 0.009374911889925846,
+            "policies": 212802
+          },
+          {
+            "value": "$211 to $335",
+            "rate": 0.00846448820194321,
+            "policies": 212535
+          },
+          {
+            "value": "$1 to $121",
+            "rate": 0.006945880406789857,
+            "policies": 212788
+          },
+          {
+            "value": "$525 to $1,689",
+            "rate": 0.0055804674229627295,
+            "policies": 212527
+          }
+        ]
+      }
+    ],
+    "rates": {
+      "State": [
+        {
+          "value": "NSW",
+          "rate": 0.025849100578426595,
+          "policies": 47197
+        },
+        {
+          "value": "SA",
+          "rate": 0.02391416752843847,
+          "policies": 7736
+        },
+        {
+          "value": "VIC",
+          "rate": 0.021351682351424518,
+          "policies": 62056
+        },
+        {
+          "value": "QLD",
+          "rate": 0.02023788389845553,
+          "policies": 33798
+        },
+        {
+          "value": "TAS",
+          "rate": 0.018427114182296808,
+          "policies": 3039
+        },
+        {
+          "value": "ACT",
+          "rate": 0.017407118732138217,
+          "policies": 3849
+        },
+        {
+          "value": "NT",
+          "rate": 0.01278409090909091,
+          "policies": 2112
+        },
+        {
+          "value": "WA",
+          "rate": 0.005809937254884651,
+          "policies": 906206
+        }
+      ],
+      "How long they've been a member": [
+        {
+          "value": "0-3m",
+          "rate": 0.026885778990767085,
+          "policies": 17221
+        },
+        {
+          "value": "3-6m",
+          "rate": 0.01702375901569792,
+          "policies": 18856
+        },
+        {
+          "value": "3-5y",
+          "rate": 0.01519626931588295,
+          "policies": 105289
+        },
+        {
+          "value": "2-3y",
+          "rate": 0.01431629179971227,
+          "policies": 56998
+        },
+        {
+          "value": "6-12m",
+          "rate": 0.01370835080476083,
+          "policies": 31003
+        },
+        {
+          "value": "1-2y",
+          "rate": 0.01306534600042395,
+          "policies": 51893
+        },
+        {
+          "value": "5-10y",
+          "rate": 0.010097690987706479,
+          "policies": 191727
+        },
+        {
+          "value": "10-15y",
+          "rate": 0.0073557323859933105,
+          "policies": 139619
+        },
+        {
+          "value": "15-20y",
+          "rate": 0.005604930771265911,
+          "policies": 102053
+        },
+        {
+          "value": "20+y",
+          "rate": 0.0028206777596247443,
+          "policies": 351334
+        }
+      ],
+      "Age": [
+        {
+          "value": "25-34",
+          "rate": 0.012661655797501935,
+          "policies": 180940
+        },
+        {
+          "value": "35-44",
+          "rate": 0.01220596932906753,
+          "policies": 214731
+        },
+        {
+          "value": "18-24",
+          "rate": 0.010265238459576638,
+          "policies": 15684
+        },
+        {
+          "value": "45-54",
+          "rate": 0.008841068034179935,
+          "policies": 168871
+        },
+        {
+          "value": "55-64",
+          "rate": 0.006769011913935155,
+          "policies": 168710
+        },
+        {
+          "value": "65-74",
+          "rate": 0.004616376531270149,
+          "policies": 155100
+        },
+        {
+          "value": "75+",
+          "rate": 0.0025006637564291756,
+          "policies": 161957
+        }
+      ],
+      "How they pay": [
+        {
+          "value": "Direct Debit",
+          "rate": 0.008622635546927904,
+          "policies": 996795
+        },
+        {
+          "value": "Group",
+          "rate": 0.004476960034942127,
+          "policies": 9158
+        },
+        {
+          "value": "Branch",
+          "rate": 0.00321463073386855,
+          "policies": 60038
+        }
+      ],
+      "Membership type (single/couple/family)": [
+        {
+          "value": "Parent Plus",
+          "rate": 0.010488896690950584,
+          "policies": 45572
+        },
+        {
+          "value": "Family",
+          "rate": 0.010314460005155082,
+          "policies": 232780
+        },
+        {
+          "value": "Single",
+          "rate": 0.007979720283447055,
+          "policies": 562927
+        },
+        {
+          "value": "Couple",
+          "rate": 0.006488247283213329,
+          "policies": 224714
+        }
+      ],
+      "Hospital cover tier": [
+        {
+          "value": "Basic",
+          "rate": 0.016344178344730304,
+          "policies": 97833
+        },
+        {
+          "value": "OVC",
+          "rate": 0.011393514460999123,
+          "policies": 7987
+        },
+        {
+          "value": "Bronze",
+          "rate": 0.011078238379745281,
+          "policies": 260601
+        },
+        {
+          "value": "(missing)",
+          "rate": 0.006597219141252363,
+          "policies": 225398
+        },
+        {
+          "value": "Silver",
+          "rate": 0.006325520123557736,
+          "policies": 264168
+        },
+        {
+          "value": "Gold",
+          "rate": 0.005209374970238946,
+          "policies": 210006
+        }
+      ],
+      "Monthly premium": [
+        {
+          "value": "(blank)",
+          "rate": 0.03667697746354397,
+          "policies": 2263
+        },
+        {
+          "value": "$121 to $211",
+          "rate": 0.010737851866452661,
+          "policies": 213078
+        },
+        {
+          "value": "$335 to $525",
+          "rate": 0.009374911889925846,
+          "policies": 212802
+        },
+        {
+          "value": "$211 to $335",
+          "rate": 0.00846448820194321,
+          "policies": 212535
+        },
+        {
+          "value": "$1 to $121",
+          "rate": 0.006945880406789857,
+          "policies": 212788
+        },
+        {
+          "value": "$525 to $1,689",
+          "rate": 0.0055804674229627295,
+          "policies": 212527
+        }
+      ]
+    }
+  },
+  "Leave PHI": {
+    "val_leavers": 2310,
+    "rate": 0.0021803272189784744,
+    "best_round": 24,
+    "ranking": 0.8239624212429756,
+    "ranking_of_final_model": 0.7880536652166219,
+    "caught_in_top5": 0.345021645021645,
+    "clues": [
+      {
+        "clue": "How long they've been a member",
+        "share": 0.2758642933024949
+      },
+      {
+        "clue": "Monthly premium",
+        "share": 0.15159062240245874
+      },
+      {
+        "clue": "Loyalty loading (joined later in life)",
+        "share": 0.09383912096880603
+      },
+      {
+        "clue": "What cover they hold",
+        "share": 0.08879073351082249
+      },
+      {
+        "clue": "State",
+        "share": 0.06462818305708518
+      },
+      {
+        "clue": "Hospital cover tier",
+        "share": 0.03938592082954904
+      },
+      {
+        "clue": "Age",
+        "share": 0.03609411130272324
+      },
+      {
+        "clue": "Out-of-pocket costs recently (6mo)",
+        "share": 0.03318459920535486
+      }
+    ],
+    "clue_groups": [
+      {
+        "group": "Membership history",
+        "share": 0.35467321160625265
+      },
+      {
+        "group": "Price and cover level",
+        "share": 0.3431396320983773
+      },
+      {
+        "group": "Claims",
+        "share": 0.11650099760523346
+      },
+      {
+        "group": "State",
+        "share": 0.07805235362910266
+      },
+      {
+        "group": "Age and household",
+        "share": 0.04978133580068764
+      },
+      {
+        "group": "Recent price rise",
+        "share": 0.036627574267853576
+      },
+      {
+        "group": "Payment habits",
+        "share": 0.015013132291625852
+      },
+      {
+        "group": "Service experience",
+        "share": 0.006211762700866917
+      }
+    ],
+    "shuffle_top": [
+      {
+        "clue": "Monthly premium",
+        "ranking_lost": 0.06544344877344876
+      },
+      {
+        "clue": "How long they've been a member",
+        "ranking_lost": 0.06329776623376626
+      },
+      {
+        "clue": "Loyalty loading (joined later in life)",
+        "ranking_lost": 0.014609036075036053
+      },
+      {
+        "clue": "Recent premium change",
+        "ranking_lost": 0.008518402597402552
+      },
+      {
+        "clue": "What cover they hold",
+        "ranking_lost": 0.008455595959595996
+      },
+      {
+        "clue": "State",
+        "ranking_lost": 0.008214093795093746
+      },
+      {
+        "clue": "Age",
+        "ranking_lost": 0.00643186724386724
+      },
+      {
+        "clue": "Hospital cover tier",
+        "ranking_lost": 0.0030486969696970068
+      }
+    ],
+    "signals": [
+      {
+        "field": "MONTHLY_PREMIUM",
+        "label": "Monthly premium",
+        "shap_share": 0.15159062240245874,
+        "shuffle_drop": 0.06544344877344876,
+        "highest": {
+          "value": "$1 to $120",
+          "rate": 0.004346201684566964,
+          "policies": 211449
+        },
+        "lowest": {
+          "value": "$525 to $1,689",
+          "rate": 0.00032165139610896415,
+          "policies": 211409
+        },
+        "times": 13.512149293126724,
+        "rates": [
+          {
+            "value": "(blank)",
+            "rate": 0.038376709307454786,
+            "policies": 2267
+          },
+          {
+            "value": "$1 to $120",
+            "rate": 0.004346201684566964,
+            "policies": 211449
+          },
+          {
+            "value": "$120 to $211",
+            "rate": 0.0028998786207157126,
+            "policies": 211733
+          },
+          {
+            "value": "$211 to $335",
+            "rate": 0.0017133012759834917,
+            "policies": 211288
+          },
+          {
+            "value": "$335 to $525",
+            "rate": 0.0012303149606299212,
+            "policies": 211328
+          },
+          {
+            "value": "$525 to $1,689",
+            "rate": 0.00032165139610896415,
+            "policies": 211409
+          }
+        ]
+      },
+      {
+        "field": "TENURE_BAND",
+        "label": "How long they've been a member",
+        "shap_share": 0.2758642933024949,
+        "shuffle_drop": 0.06329776623376626,
+        "highest": {
+          "value": "0-3m",
+          "rate": 0.015220074043603456,
+          "policies": 17017
+        },
+        "lowest": {
+          "value": "20+y",
+          "rate": 0.0006646205102459952,
+          "policies": 350576
+        },
+        "times": 22.90039775927178,
+        "rates": [
+          {
+            "value": "0-3m",
+            "rate": 0.015220074043603456,
+            "policies": 17017
+          },
+          {
+            "value": "3-6m",
+            "rate": 0.008770522487833573,
+            "policies": 18699
+          },
+          {
+            "value": "6-12m",
+            "rate": 0.006949857105741751,
+            "policies": 30792
+          },
+          {
+            "value": "1-2y",
+            "rate": 0.004818996172007073,
+            "policies": 51463
+          },
+          {
+            "value": "2-3y",
+            "rate": 0.00407714670637453,
+            "policies": 56412
+          },
+          {
+            "value": "3-5y",
+            "rate": 0.0033258038160234537,
+            "policies": 104035
+          },
+          {
+            "value": "5-10y",
+            "rate": 0.0016622218014065763,
+            "policies": 190107
+          },
+          {
+            "value": "10-15y",
+            "rate": 0.0015057528403974035,
+            "policies": 138801
+          },
+          {
+            "value": "15-20y",
+            "rate": 0.00089591619737723,
+            "policies": 101572
+          },
+          {
+            "value": "20+y",
+            "rate": 0.0006646205102459952,
+            "policies": 350576
+          }
+        ]
+      },
+      {
+        "field": "LHC_LOADING_RATE",
+        "label": "Loyalty loading (joined later in life)",
+        "shap_share": 0.09383912096880603,
+        "shuffle_drop": 0.014609036075036053,
+        "highest": {
+          "value": "(blank)",
+          "rate": 0.004793806504537453,
+          "policies": 234052
+        },
+        "lowest": {
+          "value": "-0 to 70",
+          "rate": 0.001439263794761952,
+          "policies": 825422
+        },
+        "times": 3.3307351452763583,
+        "rates": [
+          {
+            "value": "(blank)",
+            "rate": 0.004793806504537453,
+            "policies": 234052
+          },
+          {
+            "value": "-0 to 70",
+            "rate": 0.001439263794761952,
+            "policies": 825422
+          }
+        ]
+      }
+    ],
+    "rates": {
+      "State": [
+        {
+          "value": "QLD",
+          "rate": 0.006778644271145771,
+          "policies": 33340
+        },
+        {
+          "value": "NT",
+          "rate": 0.005722460658082976,
+          "policies": 2097
+        },
+        {
+          "value": "ACT",
+          "rate": 0.005521956350249803,
+          "policies": 3803
+        },
+        {
+          "value": "VIC",
+          "rate": 0.005290398663478232,
+          "policies": 61054
+        },
+        {
+          "value": "NSW",
+          "rate": 0.0050852592400242366,
+          "policies": 46212
+        },
+        {
+          "value": "SA",
+          "rate": 0.004876120189773327,
+          "policies": 7588
+        },
+        {
+          "value": "TAS",
+          "rate": 0.004671338004671338,
+          "policies": 2997
+        },
+        {
+          "value": "WA",
+          "rate": 0.0015979910969067459,
+          "policies": 902383
+        }
+      ],
+      "How long they've been a member": [
+        {
+          "value": "0-3m",
+          "rate": 0.015220074043603456,
+          "policies": 17017
+        },
+        {
+          "value": "3-6m",
+          "rate": 0.008770522487833573,
+          "policies": 18699
+        },
+        {
+          "value": "6-12m",
+          "rate": 0.006949857105741751,
+          "policies": 30792
+        },
+        {
+          "value": "1-2y",
+          "rate": 0.004818996172007073,
+          "policies": 51463
+        },
+        {
+          "value": "2-3y",
+          "rate": 0.00407714670637453,
+          "policies": 56412
+        },
+        {
+          "value": "3-5y",
+          "rate": 0.0033258038160234537,
+          "policies": 104035
+        },
+        {
+          "value": "5-10y",
+          "rate": 0.0016622218014065763,
+          "policies": 190107
+        },
+        {
+          "value": "10-15y",
+          "rate": 0.0015057528403974035,
+          "policies": 138801
+        },
+        {
+          "value": "15-20y",
+          "rate": 0.00089591619737723,
+          "policies": 101572
+        },
+        {
+          "value": "20+y",
+          "rate": 0.0006646205102459952,
+          "policies": 350576
+        }
+      ],
+      "Age": [
+        {
+          "value": "18-24",
+          "rate": 0.0076711628204308635,
+          "policies": 15643
+        },
+        {
+          "value": "25-34",
+          "rate": 0.003586328447448854,
+          "policies": 179292
+        },
+        {
+          "value": "35-44",
+          "rate": 0.002295411998231404,
+          "policies": 212598
+        },
+        {
+          "value": "45-54",
+          "rate": 0.0017653303434044634,
+          "policies": 167674
+        },
+        {
+          "value": "65-74",
+          "rate": 0.001616720772921867,
+          "policies": 154634
+        },
+        {
+          "value": "75+",
+          "rate": 0.0015636105188343995,
+          "policies": 161805
+        },
+        {
+          "value": "55-64",
+          "rate": 0.001549205138594275,
+          "policies": 167828
+        }
+      ],
+      "How they pay": [
+        {
+          "value": "Direct Debit",
+          "rate": 0.0022112501135916154,
+          "policies": 990390
+        },
+        {
+          "value": "Branch",
+          "rate": 0.0018347093653573513,
+          "policies": 59955
+        },
+        {
+          "value": "Group",
+          "rate": 0.0010956502684343157,
+          "policies": 9127
+        }
+      ],
+      "Membership type (single/couple/family)": [
+        {
+          "value": "Single",
+          "rate": 0.0028409395278076377,
+          "policies": 560026
+        },
+        {
+          "value": "Parent Plus",
+          "rate": 0.0023009867693260765,
+          "policies": 45198
+        },
+        {
+          "value": "Couple",
+          "rate": 0.001471476172372923,
+          "policies": 223585
+        },
+        {
+          "value": "Family",
+          "rate": 0.0012398933518305768,
+          "policies": 230665
+        }
+      ],
+      "Hospital cover tier": [
+        {
+          "value": "OVC",
+          "rate": 0.015092927529000873,
+          "policies": 8017
+        },
+        {
+          "value": "(missing)",
+          "rate": 0.004450629579568898,
+          "policies": 224912
+        },
+        {
+          "value": "Basic",
+          "rate": 0.0033658177901593842,
+          "policies": 96559
+        },
+        {
+          "value": "Bronze",
+          "rate": 0.0015535710826569552,
+          "policies": 258115
+        },
+        {
+          "value": "Silver",
+          "rate": 0.0010237245305709263,
+          "policies": 262766
+        },
+        {
+          "value": "Gold",
+          "rate": 0.0009229812773487004,
+          "policies": 209105
+        }
+      ],
+      "Monthly premium": [
+        {
+          "value": "(blank)",
+          "rate": 0.038376709307454786,
+          "policies": 2267
+        },
+        {
+          "value": "$1 to $120",
+          "rate": 0.004346201684566964,
+          "policies": 211449
+        },
+        {
+          "value": "$120 to $211",
+          "rate": 0.0028998786207157126,
+          "policies": 211733
+        },
+        {
+          "value": "$211 to $335",
+          "rate": 0.0017133012759834917,
+          "policies": 211288
+        },
+        {
+          "value": "$335 to $525",
+          "rate": 0.0012303149606299212,
+          "policies": 211328
+        },
+        {
+          "value": "$525 to $1,689",
+          "rate": 0.00032165139610896415,
+          "policies": 211409
+        }
+      ]
+    }
+  },
+  "System Lapsed": {
+    "val_leavers": 4061,
+    "rate": 0.0038267096986972604,
+    "best_round": 138,
+    "ranking": 0.854719491310008,
+    "ranking_of_final_model": 0.7981388709408107,
+    "caught_in_top5": 0.43683821718788474,
+    "clues": [
+      {
+        "clue": "How long they've been a member",
+        "share": 0.1702462234653272
+      },
+      {
+        "clue": "Loyalty loading (joined later in life)",
+        "share": 0.08369772045493563
+      },
+      {
+        "clue": "How they pay",
+        "share": 0.08075980802296465
+      },
+      {
+        "clue": "How many claims they've made (12mo)",
+        "share": 0.06798451350147752
+      },
+      {
+        "clue": "Membership type (single/couple/family)",
+        "share": 0.06501278216071514
+      },
+      {
+        "clue": "Age",
+        "share": 0.05975997692208082
+      },
+      {
+        "clue": "Out-of-pocket costs recently (12mo)",
+        "share": 0.04568965991639833
+      },
+      {
+        "clue": "Monthly premium",
+        "share": 0.04255022064922185
+      }
+    ],
+    "clue_groups": [
+      {
+        "group": "Claims",
+        "share": 0.28683907568275735
+      },
+      {
+        "group": "Membership history",
+        "share": 0.23955203065359418
+      },
+      {
+        "group": "Price and cover level",
+        "share": 0.17346630079895187
+      },
+      {
+        "group": "Age and household",
+        "share": 0.13498241836911096
+      },
+      {
+        "group": "Payment habits",
+        "share": 0.13070242760032524
+      },
+      {
+        "group": "Service experience",
+        "share": 0.01589458560853189
+      },
+      {
+        "group": "Recent price rise",
+        "share": 0.010044318141060526
+      },
+      {
+        "group": "State",
+        "share": 0.008518843145668009
+      }
+    ],
+    "shuffle_top": [
+      {
+        "clue": "How long they've been a member",
+        "ranking_lost": 0.050106213576294856
+      },
+      {
+        "clue": "How they pay",
+        "ranking_lost": 0.03934779528851673
+      },
+      {
+        "clue": "Monthly premium",
+        "ranking_lost": 0.009146371172945922
+      },
+      {
+        "clue": "Loyalty loading (joined later in life)",
+        "ranking_lost": 0.008208456045309176
+      },
+      {
+        "clue": "Payment arrears history",
+        "ranking_lost": 0.006559442666010162
+      },
+      {
+        "clue": "Age",
+        "ranking_lost": 0.005707182139046307
+      },
+      {
+        "clue": "Membership type (single/couple/family)",
+        "ranking_lost": 0.005248393663301321
+      },
+      {
+        "clue": "How often they pay",
+        "ranking_lost": 0.004780878273003331
+      }
+    ],
+    "signals": [
+      {
+        "field": "TENURE_BAND",
+        "label": "How long they've been a member",
+        "shap_share": 0.1702462234653272,
+        "shuffle_drop": 0.050106213576294856,
+        "highest": {
+          "value": "0-3m",
+          "rate": 0.023824780101357256,
+          "policies": 17167
+        },
+        "lowest": {
+          "value": "20+y",
+          "rate": 0.001151827385551409,
+          "policies": 350747
+        },
+        "times": 20.684332045076122,
+        "rates": [
+          {
+            "value": "0-3m",
+            "rate": 0.023824780101357256,
+            "policies": 17167
+          },
+          {
+            "value": "6-12m",
+            "rate": 0.015010952196881845,
+            "policies": 31044
+          },
+          {
+            "value": "3-6m",
+            "rate": 0.011888261008636315,
+            "policies": 18758
+          },
+          {
+            "value": "1-2y",
+            "rate": 0.008748330655931252,
+            "policies": 51667
+          },
+          {
+            "value": "2-3y",
+            "rate": 0.005258591688946334,
+            "policies": 56479
+          },
+          {
+            "value": "3-5y",
+            "rate": 0.0050090681405993605,
+            "policies": 104211
+          },
+          {
+            "value": "5-10y",
+            "rate": 0.0036119467237858242,
+            "policies": 190479
+          },
+          {
+            "value": "10-15y",
+            "rate": 0.0025836445941375017,
+            "policies": 138951
+          },
+          {
+            "value": "15-20y",
+            "rate": 0.0023692023357779046,
+            "policies": 101722
+          },
+          {
+            "value": "20+y",
+            "rate": 0.001151827385551409,
+            "policies": 350747
+          }
+        ]
+      },
+      {
+        "field": "PAYMENT_METHOD_DESC",
+        "label": "How they pay",
+        "shap_share": 0.08075980802296465,
+        "shuffle_drop": 0.03934779528851673,
+        "highest": {
+          "value": "Branch",
+          "rate": 0.01932026743576298,
+          "policies": 61024
+        },
+        "lowest": {
+          "value": "Direct Debit",
+          "rate": 0.002876743981893969,
+          "policies": 991051
+        },
+        "times": 6.716019067864026,
+        "rates": [
+          {
+            "value": "Branch",
+            "rate": 0.01932026743576298,
+            "policies": 61024
+          },
+          {
+            "value": "Group",
+            "rate": 0.0033887188456493225,
+            "policies": 9148
+          },
+          {
+            "value": "Direct Debit",
+            "rate": 0.002876743981893969,
+            "policies": 991051
+          }
+        ]
+      },
+      {
+        "field": "LHC_LOADING_RATE",
+        "label": "Loyalty loading (joined later in life)",
+        "shap_share": 0.08369772045493563,
+        "shuffle_drop": 0.008208456045309176,
+        "highest": {
+          "value": "(blank)",
+          "rate": 0.007727567051767031,
+          "policies": 234744
+        },
+        "lowest": {
+          "value": "-0 to 70",
+          "rate": 0.0027187557850694693,
+          "policies": 826481
+        },
+        "times": 2.842317465292153,
+        "rates": [
+          {
+            "value": "(blank)",
+            "rate": 0.007727567051767031,
+            "policies": 234744
+          },
+          {
+            "value": "-0 to 70",
+            "rate": 0.0027187557850694693,
+            "policies": 826481
+          }
+        ]
+      }
+    ],
+    "rates": {
+      "State": [
+        {
+          "value": "TAS",
+          "rate": 0.007651363938789089,
+          "policies": 3006
+        },
+        {
+          "value": "SA",
+          "rate": 0.006970015781167806,
+          "policies": 7604
+        },
+        {
+          "value": "QLD",
+          "rate": 0.0068084340601661615,
+          "policies": 33341
+        },
+        {
+          "value": "NT",
+          "rate": 0.006196377502383222,
+          "policies": 2098
+        },
+        {
+          "value": "NSW",
+          "rate": 0.005580188169135936,
+          "policies": 46235
+        },
+        {
+          "value": "VIC",
+          "rate": 0.004654593132836188,
+          "policies": 61015
+        },
+        {
+          "value": "WA",
+          "rate": 0.0035304540371825827,
+          "policies": 904133
+        },
+        {
+          "value": "ACT",
+          "rate": 0.0029000790930661744,
+          "policies": 3793
+        }
+      ],
+      "How long they've been a member": [
+        {
+          "value": "0-3m",
+          "rate": 0.023824780101357256,
+          "policies": 17167
+        },
+        {
+          "value": "6-12m",
+          "rate": 0.015010952196881845,
+          "policies": 31044
+        },
+        {
+          "value": "3-6m",
+          "rate": 0.011888261008636315,
+          "policies": 18758
+        },
+        {
+          "value": "1-2y",
+          "rate": 0.008748330655931252,
+          "policies": 51667
+        },
+        {
+          "value": "2-3y",
+          "rate": 0.005258591688946334,
+          "policies": 56479
+        },
+        {
+          "value": "3-5y",
+          "rate": 0.0050090681405993605,
+          "policies": 104211
+        },
+        {
+          "value": "5-10y",
+          "rate": 0.0036119467237858242,
+          "policies": 190479
+        },
+        {
+          "value": "10-15y",
+          "rate": 0.0025836445941375017,
+          "policies": 138951
+        },
+        {
+          "value": "15-20y",
+          "rate": 0.0023692023357779046,
+          "policies": 101722
+        },
+        {
+          "value": "20+y",
+          "rate": 0.001151827385551409,
+          "policies": 350747
+        }
+      ],
+      "Age": [
+        {
+          "value": "18-24",
+          "rate": 0.014537836465210768,
+          "policies": 15752
+        },
+        {
+          "value": "25-34",
+          "rate": 0.00650654269014954,
+          "policies": 179819
+        },
+        {
+          "value": "35-44",
+          "rate": 0.004491544913102451,
+          "policies": 213067
+        },
+        {
+          "value": "45-54",
+          "rate": 0.0036430739924995536,
+          "policies": 167990
+        },
+        {
+          "value": "55-64",
+          "rate": 0.002618922908432932,
+          "policies": 168008
+        },
+        {
+          "value": "65-74",
+          "rate": 0.002236153299295547,
+          "policies": 154730
+        },
+        {
+          "value": "75+",
+          "rate": 0.0018967125708178106,
+          "policies": 161859
+        }
+      ],
+      "How they pay": [
+        {
+          "value": "Branch",
+          "rate": 0.01932026743576298,
+          "policies": 61024
+        },
+        {
+          "value": "Group",
+          "rate": 0.0033887188456493225,
+          "policies": 9148
+        },
+        {
+          "value": "Direct Debit",
+          "rate": 0.002876743981893969,
+          "policies": 991051
+        }
+      ],
+      "Membership type (single/couple/family)": [
+        {
+          "value": "Parent Plus",
+          "rate": 0.007111874408261224,
+          "policies": 45417
+        },
+        {
+          "value": "Single",
+          "rate": 0.004893251909811629,
+          "policies": 561181
+        },
+        {
+          "value": "Family",
+          "rate": 0.002744434295905425,
+          "policies": 231013
+        },
+        {
+          "value": "Couple",
+          "rate": 0.0016009731054406253,
+          "policies": 223614
+        }
+      ],
+      "Hospital cover tier": [
+        {
+          "value": "OVC",
+          "rate": 0.016442451420029897,
+          "policies": 8028
+        },
+        {
+          "value": "(missing)",
+          "rate": 0.007451505372530941,
+          "policies": 225592
+        },
+        {
+          "value": "Basic",
+          "rate": 0.005086533093480553,
+          "policies": 96726
+        },
+        {
+          "value": "Bronze",
+          "rate": 0.00313702736679238,
+          "policies": 258525
+        },
+        {
+          "value": "Gold",
+          "rate": 0.0022018120770108847,
+          "policies": 209373
+        },
+        {
+          "value": "Silver",
+          "rate": 0.0018404371418467493,
+          "policies": 262981
+        }
+      ],
+      "Monthly premium": [
+        {
+          "value": "(blank)",
+          "rate": 0.032830523513753325,
+          "policies": 2254
+        },
+        {
+          "value": "$1 to $120",
+          "rate": 0.007497745482702776,
+          "policies": 211797
+        },
+        {
+          "value": "$120 to $211",
+          "rate": 0.004797159477222936,
+          "policies": 211792
+        },
+        {
+          "value": "$211 to $335",
+          "rate": 0.0029790990939950615,
+          "policies": 211809
+        },
+        {
+          "value": "$335 to $525",
+          "rate": 0.002321061272243504,
+          "policies": 211972
+        },
+        {
+          "value": "$525 to $1,689",
+          "rate": 0.0012287276525158198,
+          "policies": 211601
+        }
+      ]
+    }
+  },
+  "Non-Recoverable": {
+    "val_leavers": 3240,
+    "rate": 0.0030554392476829584,
+    "best_round": 150,
+    "ranking": 0.8772139969487898,
+    "ranking_of_final_model": 0.7947179605582062,
+    "caught_in_top5": 0.5669753086419753,
+    "clues": [
+      {
+        "clue": "Monthly premium",
+        "share": 0.15970418960121316
+      },
+      {
+        "clue": "Age",
+        "share": 0.14618579353614036
+      },
+      {
+        "clue": "Membership type (single/couple/family)",
+        "share": 0.14591336631796126
+      },
+      {
+        "clue": "How long they've been a member",
+        "share": 0.08767074159961225
+      },
+      {
+        "clue": "Out-of-pocket costs recently (12mo)",
+        "share": 0.04773753641987007
+      },
+      {
+        "clue": "Loyalty loading (joined later in life)",
+        "share": 0.03265067420184441
+      },
+      {
+        "clue": "Benefits paid out recently (3mo)",
+        "share": 0.030628908202730155
+      },
+      {
+        "clue": "Hospital cover tier",
+        "share": 0.028773491003027982
+      }
+    ],
+    "clue_groups": [
+      {
+        "group": "Age and household",
+        "share": 0.30468846930519206
+      },
+      {
+        "group": "Price and cover level",
+        "share": 0.26757743769625836
+      },
+      {
+        "group": "Membership history",
+        "share": 0.15167098044541588
+      },
+      {
+        "group": "Claims",
+        "share": 0.14024350014765202
+      },
+      {
+        "group": "Service experience",
+        "share": 0.04995000749271979
+      },
+      {
+        "group": "Recent price rise",
+        "share": 0.04136303325033845
+      },
+      {
+        "group": "Payment habits",
+        "share": 0.026915397601594893
+      },
+      {
+        "group": "State",
+        "share": 0.017591174060828444
+      }
+    ],
+    "shuffle_top": [
+      {
+        "clue": "Age",
+        "ranking_lost": 0.06822704629629628
+      },
+      {
+        "clue": "Monthly premium",
+        "ranking_lost": 0.05558438683127587
+      },
+      {
+        "clue": "Membership type (single/couple/family)",
+        "ranking_lost": 0.021986383744856064
+      },
+      {
+        "clue": "How long they've been a member",
+        "ranking_lost": 0.018211540123456826
+      },
+      {
+        "clue": "Hospital cover tier",
+        "ranking_lost": 0.010828213991769475
+      },
+      {
+        "clue": "Negative-sentiment calls, last 6mo",
+        "ranking_lost": 0.008487017489711923
+      },
+      {
+        "clue": "Recent premium change",
+        "ranking_lost": 0.008297713991769595
+      },
+      {
+        "clue": "Benefits paid out recently (3mo)",
+        "ranking_lost": 0.0075592304526749254
+      }
+    ],
+    "signals": [
+      {
+        "field": "MONTHLY_PREMIUM",
+        "label": "Monthly premium",
+        "shap_share": 0.15970418960121316,
+        "shuffle_drop": 0.05558438683127587,
+        "highest": {
+          "value": "$211 to $335",
+          "rate": 0.004226930369123551,
+          "policies": 211501
+        },
+        "lowest": {
+          "value": "$525 to $1,689",
+          "rate": 0.00023179904442026587,
+          "policies": 211390
+        },
+        "times": 18.235322667939332,
+        "rates": [
+          {
+            "value": "(blank)",
+            "rate": 0.1383399209486166,
+            "policies": 2530
+          },
+          {
+            "value": "$211 to $335",
+            "rate": 0.004226930369123551,
+            "policies": 211501
+          },
+          {
+            "value": "$1 to $121",
+            "rate": 0.004035935897617663,
+            "policies": 211599
+          },
+          {
+            "value": "$121 to $211",
+            "rate": 0.0034069698759598348,
+            "policies": 211625
+          },
+          {
+            "value": "$335 to $525",
+            "rate": 0.001756714000349454,
+            "policies": 211759
+          },
+          {
+            "value": "$525 to $1,689",
+            "rate": 0.00023179904442026587,
+            "policies": 211390
+          }
+        ]
+      },
+      {
+        "field": "POLICY_OWNER_AGE_BAND",
+        "label": "Age",
+        "shap_share": 0.1461857935361404,
+        "shuffle_drop": 0.06822704629629628,
+        "highest": {
+          "value": "75+",
+          "rate": 0.008913836998865065,
+          "policies": 163005
+        },
+        "lowest": {
+          "value": "45-54",
+          "rate": 0.0009192273714872382,
+          "policies": 167532
+        },
+        "times": 9.697097013596508,
+        "rates": [
+          {
+            "value": "75+",
+            "rate": 0.008913836998865065,
+            "policies": 163005
+          },
+          {
+            "value": "18-24",
+            "rate": 0.005318467256183519,
+            "policies": 15606
+          },
+          {
+            "value": "65-74",
+            "rate": 0.003704229533163825,
+            "policies": 154958
+          },
+          {
+            "value": "25-34",
+            "rate": 0.0028688959215909535,
+            "policies": 179163
+          },
+          {
+            "value": "55-64",
+            "rate": 0.0013230824244591453,
+            "policies": 167790
+          },
+          {
+            "value": "35-44",
+            "rate": 0.0011302095596891924,
+            "policies": 212350
+          },
+          {
+            "value": "45-54",
+            "rate": 0.0009192273714872382,
+            "policies": 167532
+          }
+        ]
+      },
+      {
+        "field": "SCALE",
+        "label": "Membership type (single/couple/family)",
+        "shap_share": 0.14591336631796128,
+        "shuffle_drop": 0.021986383744856064,
+        "highest": {
+          "value": "Single",
+          "rate": 0.00503863607613543,
+          "policies": 561263
+        },
+        "lowest": {
+          "value": "Family",
+          "rate": 0.0003167687848228698,
+          "policies": 230452
+        },
+        "times": 15.906352890651538,
+        "rates": [
+          {
+            "value": "Single",
+            "rate": 0.00503863607613543,
+            "policies": 561263
+          },
+          {
+            "value": "Couple",
+            "rate": 0.001315142026392306,
+            "policies": 223550
+          },
+          {
+            "value": "Parent Plus",
+            "rate": 0.0009969206229646203,
+            "policies": 45139
+          },
+          {
+            "value": "Family",
+            "rate": 0.0003167687848228698,
+            "policies": 230452
+          }
+        ]
+      }
+    ],
+    "rates": {
+      "State": [
+        {
+          "value": "SA",
+          "rate": 0.0038258575197889183,
+          "policies": 7580
+        },
+        {
+          "value": "NSW",
+          "rate": 0.0036406978004117456,
+          "policies": 46145
+        },
+        {
+          "value": "QLD",
+          "rate": 0.003400848707376531,
+          "policies": 33227
+        },
+        {
+          "value": "VIC",
+          "rate": 0.0031024294156270517,
+          "policies": 60920
+        },
+        {
+          "value": "WA",
+          "rate": 0.0030110815769612974,
+          "policies": 903662
+        },
+        {
+          "value": "ACT",
+          "rate": 0.0029000790930661744,
+          "policies": 3793
+        },
+        {
+          "value": "NT",
+          "rate": 0.0019147917663954045,
+          "policies": 2089
+        },
+        {
+          "value": "TAS",
+          "rate": 0.0016733601070950468,
+          "policies": 2988
+        }
+      ],
+      "How long they've been a member": [
+        {
+          "value": "0-3m",
+          "rate": 0.02188758536158291,
+          "policies": 17133
+        },
+        {
+          "value": "3-6m",
+          "rate": 0.007337189374464439,
+          "policies": 18672
+        },
+        {
+          "value": "6-12m",
+          "rate": 0.006465867368489456,
+          "policies": 30777
+        },
+        {
+          "value": "1-2y",
+          "rate": 0.0038124136857870883,
+          "policies": 51411
+        },
+        {
+          "value": "20+y",
+          "rate": 0.003566583332622292,
+          "policies": 351597
+        },
+        {
+          "value": "2-3y",
+          "rate": 0.003229011425732737,
+          "policies": 56364
+        },
+        {
+          "value": "3-5y",
+          "rate": 0.0020788220008661758,
+          "policies": 103905
+        },
+        {
+          "value": "5-10y",
+          "rate": 0.001714733558808523,
+          "policies": 190117
+        },
+        {
+          "value": "15-20y",
+          "rate": 0.0015152260540168248,
+          "policies": 101635
+        },
+        {
+          "value": "10-15y",
+          "rate": 0.0014481998371675805,
+          "policies": 138793
+        }
+      ],
+      "Age": [
+        {
+          "value": "75+",
+          "rate": 0.008913836998865065,
+          "policies": 163005
+        },
+        {
+          "value": "18-24",
+          "rate": 0.005318467256183519,
+          "policies": 15606
+        },
+        {
+          "value": "65-74",
+          "rate": 0.003704229533163825,
+          "policies": 154958
+        },
+        {
+          "value": "25-34",
+          "rate": 0.0028688959215909535,
+          "policies": 179163
+        },
+        {
+          "value": "55-64",
+          "rate": 0.0013230824244591453,
+          "policies": 167790
+        },
+        {
+          "value": "35-44",
+          "rate": 0.0011302095596891924,
+          "policies": 212350
+        },
+        {
+          "value": "45-54",
+          "rate": 0.0009192273714872382,
+          "policies": 167532
+        }
+      ],
+      "How they pay": [
+        {
+          "value": "Branch",
+          "rate": 0.004971401968608673,
+          "policies": 60144
+        },
+        {
+          "value": "Group",
+          "rate": 0.0030617823947512303,
+          "policies": 9145
+        },
+        {
+          "value": "Direct Debit",
+          "rate": 0.002939119959076311,
+          "policies": 991113
+        }
+      ],
+      "Membership type (single/couple/family)": [
+        {
+          "value": "Single",
+          "rate": 0.00503863607613543,
+          "policies": 561263
+        },
+        {
+          "value": "Couple",
+          "rate": 0.001315142026392306,
+          "policies": 223550
+        },
+        {
+          "value": "Parent Plus",
+          "rate": 0.0009969206229646203,
+          "policies": 45139
+        },
+        {
+          "value": "Family",
+          "rate": 0.0003167687848228698,
+          "policies": 230452
+        }
+      ],
+      "Hospital cover tier": [
+        {
+          "value": "OVC",
+          "rate": 0.06334519572953737,
+          "policies": 8430
+        },
+        {
+          "value": "(missing)",
+          "rate": 0.003520217888581321,
+          "policies": 224702
+        },
+        {
+          "value": "Gold",
+          "rate": 0.0032206195994980607,
+          "policies": 209587
+        },
+        {
+          "value": "Silver",
+          "rate": 0.0028793375244534768,
+          "policies": 263255
+        },
+        {
+          "value": "Basic",
+          "rate": 0.0017219917012448133,
+          "policies": 96400
+        },
+        {
+          "value": "Bronze",
+          "rate": 0.0012246637987830872,
+          "policies": 258030
+        }
+      ],
+      "Monthly premium": [
+        {
+          "value": "(blank)",
+          "rate": 0.1383399209486166,
+          "policies": 2530
+        },
+        {
+          "value": "$211 to $335",
+          "rate": 0.004226930369123551,
+          "policies": 211501
+        },
+        {
+          "value": "$1 to $121",
+          "rate": 0.004035935897617663,
+          "policies": 211599
+        },
+        {
+          "value": "$121 to $211",
+          "rate": 0.0034069698759598348,
+          "policies": 211625
+        },
+        {
+          "value": "$335 to $525",
+          "rate": 0.001756714000349454,
+          "policies": 211759
+        },
+        {
+          "value": "$525 to $1,689",
+          "rate": 0.00023179904442026587,
+          "policies": 211390
+        }
+      ]
+    }
+  }
+}
