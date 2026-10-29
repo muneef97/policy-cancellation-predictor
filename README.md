@@ -7,6 +7,16 @@ Every month, the model gives each active policy a chance of cancelling within th
 driving that chance, and picks the most cost-effective retention action using HBF's own formula.
 No HBF data is included in this folder.
 
+
+## Watch the 60-second demo
+
+A narrated walkthrough of the live demo (HBF Retention Hub): every policy scored, the riskiest members and why they're flagged, a live what-if, the retention planner, and the model's tested accuracy.
+
+
+
+https://github.com/user-attachments/assets/b13414d9-e4f0-4f57-a17c-06ee0a9248d2
+
+
 ---
 
 ## 1. What is in this folder
